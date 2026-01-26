@@ -31,13 +31,13 @@ const interFont = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Campers lightening',
+  title: 'Campers Lightening',
   description: 'Investigate travel trucks',
   openGraph: {
-    title: 'Campers lightening · Campers collection',
+    title: 'Campers Lightening · Campers collection',
     description: 'Investigate travel trucks ',
     url: SITE_URL,
-    siteName: 'Campers lightening',
+    siteName: 'Campers Lightening',
     images: [
       {
         url: GRAPH_IMAGE_URL,
@@ -65,7 +65,6 @@ export default function RootLayout({
             {children}
             {/* {modal}//TODO del comments */}
           </main>
-          {/* <Footer />//TODO del comments */}
         </TanStackProvider>
       </body>
     </html>
