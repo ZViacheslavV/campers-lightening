@@ -2,7 +2,7 @@ import axios, { AxiosError } from 'axios';
 
 export type ApiError = AxiosError<{ error: string }>;
 
-const baseURL = 'https://66b1f8e71ca8ad33d4f5f63e.mockapi.io';
+const baseURL = process.env.NEXT_PUBLIC_BACKEND_API_URL;
 
 export const api = axios.create({
   baseURL,
