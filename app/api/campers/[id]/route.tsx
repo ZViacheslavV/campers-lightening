@@ -14,15 +14,11 @@ type Props = {
 export async function GET(request: Request, { params }: Props) {
   const cookieStore = await cookies();
   const { id } = await params;
-  //   const body = await request.json();
 
   try {
-    const res = await api.get(
-      `${API_ENDPOINTS.CAMPERS_ID}${id}`,
-      /* body,  */ {
-        headers: { Cookie: cookieStore.toString() },
-      }
-    );
+    const res = await api.get(`${API_ENDPOINTS.CAMPERS_ID}${id}`, {
+      headers: { Cookie: cookieStore.toString() },
+    });
     return NextResponse.json(res.data, { status: res.status });
   } catch (error) {
     if (isAxiosError(error)) {

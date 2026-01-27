@@ -13,16 +13,17 @@
 
 body {
   font-family: var(--font-inter), sans-serif;
-  display: flex;
-  flex-direction: column;
-  /*   min-height: 100vh;
-  margin: 0;
-  background-color: #f8f9fa; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* min-height: 100vh; */
+  /* margin: 0; */
+  color: var(--main);
+  background-color: var(--white);
 }
 
-main {
+/* main {
   flex: 1;
-}
+} */
 
 /* //TODO del comments */
 /* 
