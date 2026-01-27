@@ -5,6 +5,8 @@ import { NextResponse } from 'next/server';
 import { logErrorResponse } from '../../_utils/utils';
 import { api } from '../../api';
 
+export const dynamic = 'force-dynamic';
+
 type Props = {
   params: Promise<{ id: string }>;
 };

@@ -5,6 +5,8 @@ import { logErrorResponse } from '../_utils/utils';
 import { api } from '../api';
 import { API_ENDPOINTS } from '@/lib/api/api';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const cookieStore = await cookies();
