@@ -21,7 +21,6 @@ const geistMono = Geist_Mono({
 }); */
 
 const SITE_URL = ''; //TODO add SITE URL
-const GRAPH_IMAGE_URL = ''; //TODO add graph image and url
 
 const interFont = Inter({
   variable: '--font-inter',
@@ -32,39 +31,43 @@ const interFont = Inter({
 
 export const metadata: Metadata = {
   title: 'Campers Lightening',
-  description: 'Investigate travel trucks',
+  description: 'Explore travel trucks',
   openGraph: {
     title: 'Campers Lightening · Campers collection',
-    description: 'Investigate travel trucks ',
+    description: 'Explore travel trucks',
     url: SITE_URL,
     siteName: 'Campers Lightening',
     images: [
       {
-        url: GRAPH_IMAGE_URL,
+        url: '/campers-og.jpg',
         width: 1200,
         height: 630,
-        alt: 'Notebook image',
+        alt: 'Campers image',
       },
     ],
+    locale: 'uk_UA',
+    type: 'website',
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Campers Lightening',
+    description: 'Explore travel trucks',
+    images: ['/campers-og.jpg'],
   },
 };
 
 export default function RootLayout({
   children,
-  /* modal,//TODO del comments  */
 }: Readonly<{
   children: React.ReactNode;
-  /* modal: React.ReactNode;//TODO del comments   */
 }>) {
   return (
     <html lang="en">
       <body className={`${interFont.variable}`}>
         <TanStackProvider>
           {/*  <Header /> //TODO add header*/}
-          <main>
-            {children}
-            {/* {modal}//TODO del comments */}
-          </main>
+          <main>{children}</main>
         </TanStackProvider>
       </body>
     </html>
