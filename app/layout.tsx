@@ -3,23 +3,6 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 
-/* import Header from '@/components/Header/Header';
-import Footer from '@/components/Footer/Footer';
-import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
-import { GRAPH_IMAGE_URL, SITE_URL } from '@/lib/constants';
-import AuthProvider from '@/components/AuthProvider/AuthProvider'; */
-//TODO del comments
-
-/* const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-}); */
-
 const SITE_URL = ''; //TODO add SITE URL
 
 const interFont = Inter({
