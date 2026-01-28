@@ -1,0 +1,15 @@
+// Colors
+$main-color: var(--main);
+$inputs-color: var(--inputs);
+$badges-color: var(--badges);
+$button-hover-color: var(--button-hover);
+$transition-color: var(--transition-default);
+
+// Transition
+$transition-color: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+// Breakpoints
+$bp-desktop: 1440px;
+
+// Sizes
+$header-height: 72px;

@@ -1,6 +1,6 @@
 @import 'modern-normalize/modern-normalize.css';
 
-/* == Base == */
+/* == CSS Variables == */
 :root {
   --background: #ffffff;
   --foreground: #101828;
@@ -15,52 +15,27 @@
   --button: #e44848;
   --button-hover: #d84343;
   --rating: #ffc531;
+
+  --transition-default: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* == Base Styles == */
+html {
+  scroll-behavior: smooth;
+  height: 100%;
 }
 
 body {
   font-family: var(--font-inter), sans-serif;
   color: var(--foreground);
   background-color: var(--background);
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-/* main {
-  flex: 1;
-} */
-/* //TODO del comments */
-
-/* == Color scheme == */
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-
-  html {
-    color-scheme: dark;
-  }
-} */
-
-/* == Reset == */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html,
-body {
   height: 100%;
   overflow-x: hidden;
+  margin: 0;
 }
 
-body,
 h1,
 h2,
 h3,
@@ -78,11 +53,6 @@ ol {
   list-style: none;
 }
 
-ol:last-child,
-ul:last-child {
-  margin-bottom: 0;
-}
-
 a {
   text-decoration: none;
   color: currentColor;
@@ -90,11 +60,13 @@ a {
 
 input,
 textarea,
-select {
+select,
+button {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
   outline: none;
+  border: none;
 }
 
 textarea {
@@ -102,18 +74,9 @@ textarea {
 }
 
 button {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  color: currentColor;
-  border: none;
-
-  display: block;
   cursor: pointer;
-}
-
-address {
-  font-style: normal;
+  display: block;
+  color: currentColor;
 }
 
 img,
@@ -123,7 +86,7 @@ svg {
   max-width: 100%;
 }
 
-/* == Hidden == */
+/* Accessibility */
 .visually-hidden {
   position: absolute;
   width: 1px;
