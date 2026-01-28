@@ -1,5 +1,7 @@
 import styles from './page.module.css';
 
-export default function Home() {
+const Home = () => {
   return <section className={styles.main}>Hello world</section>;
-}
+};
+
+export default Home;
