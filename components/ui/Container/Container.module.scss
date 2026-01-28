@@ -1,0 +1,40 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.container {
+  margin: 0 auto;
+  padding: 0 $container-padding-mobile;
+
+  @include media-min($bp-md) {
+    padding: 0 $container-padding-tablet;
+  }
+
+  @include media-min($bp-xxl) {
+    padding: 0 $container-padding-desktop;
+  }
+}
+
+/* Sizes */
+.sm {
+  max-width: $bp-sm;
+}
+
+.md {
+  max-width: $bp-md;
+}
+
+.lg {
+  max-width: $bp-lg;
+}
+
+.xl {
+  max-width: $bp-xl;
+}
+
+.xxl {
+  max-width: $bp-xxl;
+}
+
+.fluid {
+  max-width: none;
+}

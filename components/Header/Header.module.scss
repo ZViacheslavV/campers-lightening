@@ -1,5 +1,5 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
 
 .header {
   border-bottom: 1px solid $badges-color;
@@ -30,7 +30,7 @@
   display: none;
   gap: 32px;
 
-  @media (min-width: $bp-desktop) {
+  @include media-min($bp-xxl) {
     display: flex;
   }
 }

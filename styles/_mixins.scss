@@ -8,3 +8,9 @@
   justify-content: $justify;
   align-items: $align;
 }
+
+@mixin media-min($bp) {
+  @media only screen and (min-width: $bp) {
+    @content;
+  }
+}
