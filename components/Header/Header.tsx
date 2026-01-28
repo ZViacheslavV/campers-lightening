@@ -5,7 +5,7 @@ import Link from 'next/link';
 import clsx from 'clsx';
 
 import Container from '../ui/Container/Container';
-import styles from './Header.module.css';
+import styles from './Header.module.scss';
 
 const Header = () => {
   const pathname = usePathname();

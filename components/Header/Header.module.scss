@@ -34,15 +34,14 @@
   font-weight: 500;
   color: var(--main);
   padding: 24px 0;
-  /* text-align: center; */
   text-decoration: none;
   transition: color 200ms ease;
-}
 
-.link:hover {
-  color: var(--button-hover);
-}
+  &:hover {
+    color: var(--button-hover);
+  }
 
-.active {
-  color: var(--button-hover);
+  &.active {
+    color: var(--button-hover);
+  }
 }
