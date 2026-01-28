@@ -1,7 +1,11 @@
+import 'modern-normalize/modern-normalize.css';
+import './globals.css';
+
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
+import Header from '@/components/Header/Header';
 
 const SITE_URL = ''; //TODO add SITE URL
 
@@ -49,7 +53,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${interFont.variable}`}>
         <TanStackProvider>
-          {/*  <Header /> //TODO add header*/}
+          <Header />
           <main>{children}</main>
         </TanStackProvider>
       </body>
