@@ -1,22 +1,14 @@
+import { Camper, CampersApiResponse } from '@/types/campers';
 import { API_ENDPOINTS, nextServer } from './api';
 
-export type WeeksInfo = {
-  weekNumber: number;
-  daysLeftToBirth: number;
-  babyState: BabyState;
-  momState: MomState;
-};
-
-export const getWeeksDemo = async (): Promise<WeeksApiResponse> => {
-  console.log('🔵 CLIENT fetch catalog '); // TODO del console.log
-  const { data } = await nextServer.get<WeeksApiResponse>(API_ENDPOINTS.CAMPERS);
+export const getCampersCatalog = async () => {
+  console.log('🔵 CLIENT fetch campers catalog '); // TODO del console.log
+  const { data } = await nextServer.get<CampersApiResponse>(API_ENDPOINTS.CAMPERS);
   return data;
 };
 
-export const getBabyWeeks = async (weekNumber: number | string): Promise<BabyWeeksApiResponse> => {
-  console.log('🔵 CLIENT fetch weeks BABY'); // TODO del console.log
-  const { data } = await nextServer.get<BabyWeeksApiResponse>(
-    `${API_ENDPOINTS.WEEKS_BABY_WEEK_NUMB}${weekNumber}`
-  );
+export const getCamperById = async (id: number | string) => {
+  console.log('🔵 CLIENT fetch camper by id'); // TODO del console.log
+  const { data } = await nextServer.get<Camper>(`${API_ENDPOINTS.CAMPERS_ID}${id}`);
   return data;
 };
