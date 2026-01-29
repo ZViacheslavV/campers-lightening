@@ -1,48 +1,58 @@
-import { useCallback, useEffect } from 'react';
+// hooks/useCampersApi.ts
+'use client';
+
+import { useCallback, useEffect, useRef } from 'react';
 import { getCampersCatalog } from '@/lib/api/clientApi';
 import { useCampersStore } from '@/lib/store/camperStore';
 
-export const useCampersApi = () => {
-  const filter = useCampersStore((state) => state.filter);
-  const page = useCampersStore((state) => state.page);
-  const hasMore = useCampersStore((state) => state.hasMore);
-  const loading = useCampersStore((state) => state.loading);
+const PAGE_LIMIT = 4;
 
-  const setCampers = useCampersStore((state) => state.setCampers);
-  const setPage = useCampersStore((state) => state.setPage);
-  const setHasMore = useCampersStore((state) => state.setHasMore);
-  const setLoading = useCampersStore((state) => state.setLoading);
+export const useCampersApi = () => {
+  const filter = useCampersStore((s) => s.filter);
+  const page = useCampersStore((s) => s.page);
+  const hasMore = useCampersStore((s) => s.hasMore);
+  const loading = useCampersStore((s) => s.loading);
+
+  const setCampers = useCampersStore((s) => s.setCampers);
+  const setPage = useCampersStore((s) => s.setPage);
+  const setHasMore = useCampersStore((s) => s.setHasMore);
+  const setLoading = useCampersStore((s) => s.setLoading);
+
+  const inflightRef = useRef(false);
 
   const fetchCampers = useCallback(
-    async (reset: boolean = true) => {
-      if (loading) return;
+    async (reset: boolean) => {
+      if (inflightRef.current) return;
 
+      inflightRef.current = true;
       setLoading(true);
-      const currentPage = reset ? 1 : page + 1;
+
+      const nextPage = reset ? 1 : page + 1;
 
       try {
-        const response = await getCampersCatalog({
-          page: currentPage,
-          limit: 4,
+        const res = await getCampersCatalog({
+          page: nextPage,
+          limit: PAGE_LIMIT,
           filter,
         });
 
-        setCampers(response.items, reset);
-        setPage(currentPage);
-        setHasMore(response.items.length === 4);
-      } catch (err) {
-        console.error('Error fetching campers:', err);
+        setCampers(res.items, reset);
+        setPage(nextPage);
+        setHasMore(res.items.length === PAGE_LIMIT);
+      } catch (e) {
+        console.error('Fetch campers failed', e);
       } finally {
+        inflightRef.current = false;
         setLoading(false);
       }
     },
-    [filter, page, loading, setCampers, setPage, setHasMore, setLoading]
+    [filter, page, setCampers, setPage, setHasMore, setLoading]
   );
 
   const loadMore = useCallback(() => {
     if (!hasMore || loading) return;
     fetchCampers(false);
-  }, [hasMore, loading, fetchCampers]);
+  }, [fetchCampers, hasMore, loading]);
 
   //Automatic fetch after filter changed:
   useEffect(() => {

@@ -36,7 +36,7 @@ export default function CampersList() {
         </button>
       )}
 
-      {!hasMore && campers.length > 0 && <p className="no-more">No more campers to load.</p>}
+      {!hasMore && campers.length > 0 && <p className="no-more">No more campers. </p>}
     </div>
   );
 }

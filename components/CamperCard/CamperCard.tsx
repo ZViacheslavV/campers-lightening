@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default function CamperCard({ camper }: Props) {
-  const { favorites, setFavorites } = useCampersStore();
+  const { favorites, toggleFavorite } = useCampersStore();
 
   const isFavorite = favorites.includes(camper.id);
 
@@ -30,7 +30,7 @@ export default function CamperCard({ camper }: Props) {
           <h2>{camper.name}</h2>
           <div className="price-fav">
             <p>€{camper.price.toFixed(2)}</p>
-            <button onClick={() => setFavorites(camper.id)}>
+            <button onClick={() => toggleFavorite(camper.id)}>
               <svg className={isFavorite ? 'favorite' : ''}>
                 <use href="/icons.svg#icon-heart" />
               </svg>
