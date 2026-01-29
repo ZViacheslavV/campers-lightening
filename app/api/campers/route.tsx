@@ -3,10 +3,7 @@ import { isAxiosError } from 'axios';
 import { api } from '../api';
 import { API_ENDPOINTS } from '@/lib/api/api';
 
-/**
- * Query keys that represent boolean equipment filters.
- * Presence of the key means `true`.
- */
+/* Query keys that represent boolean equipment filters. Presence of the key means `true`.*/
 const BOOLEAN_EQUIPMENT_FILTER_KEYS = [
   'AC',
   'bathroom',
@@ -19,9 +16,7 @@ const BOOLEAN_EQUIPMENT_FILTER_KEYS = [
   'water',
 ] as const;
 
-/**
- * Query keys that represent string-based filters.
- */
+/* Query keys that represent string-based filters.*/
 const STRING_FILTER_KEYS = ['location', 'form', 'transmission', 'engine'] as const;
 
 type BooleanEquipmentFilterKey = (typeof BOOLEAN_EQUIPMENT_FILTER_KEYS)[number];
@@ -30,9 +25,7 @@ type StringFilterKey = (typeof STRING_FILTER_KEYS)[number];
 
 type QueryParams = Record<string, string | number | boolean>;
 
-/**
- * Extracts pagination params from URLSearchParams.
- */
+/*  Extracts pagination params from URLSearchParams. */
 function parsePaginationParams(searchParams: URLSearchParams) {
   const page = Number(searchParams.get('page')) || 1;
   const limit = Number(searchParams.get('limit')) || 4;
@@ -40,9 +33,7 @@ function parsePaginationParams(searchParams: URLSearchParams) {
   return { page, limit };
 }
 
-/**
- * Extracts filter params (string + boolean) from URLSearchParams.
- */
+/* Extracts filter params (string + boolean) from URLSearchParams.*/
 function parseFilterParams(searchParams: URLSearchParams): QueryParams {
   const filters: QueryParams = {};
 

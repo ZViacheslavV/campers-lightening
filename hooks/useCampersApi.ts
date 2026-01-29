@@ -27,26 +27,26 @@ export const useCampersApi = () => {
       inflightRef.current = true;
       setLoading(true);
 
-      const nextPage = reset ? 1 : page + 1;
+      const page = reset ? 1 : useCampersStore.getState().page + 1;
+
+      console.log('FETCH PAGE', page);
 
       try {
         const res = await getCampersCatalog({
-          page: nextPage,
+          page,
           limit: PAGE_LIMIT,
           filter,
         });
 
         setCampers(res.items, reset);
-        setPage(nextPage);
+        setPage(page);
         setHasMore(res.items.length === PAGE_LIMIT);
-      } catch (e) {
-        console.error('Fetch campers failed', e);
       } finally {
         inflightRef.current = false;
         setLoading(false);
       }
     },
-    [filter, page, setCampers, setPage, setHasMore, setLoading]
+    [filter, setCampers, setPage, setHasMore, setLoading]
   );
 
   const loadMore = useCallback(() => {
