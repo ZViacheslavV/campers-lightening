@@ -1,5 +1,7 @@
-import { Camper, CampersApiResponse } from '@/types/campers';
+import { Camper, CampersApiResponse } from '@/types/camper';
 import { API_ENDPOINTS, nextServer } from './api';
+
+//================================================================
 
 export const getCampersCatalog = async () => {
   console.log('🔵 CLIENT fetch campers catalog '); // TODO del console.log

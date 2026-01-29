@@ -1,6 +1,8 @@
 import { cookies } from 'next/headers';
 import { API_ENDPOINTS, nextServer } from './api';
-import { Camper, CampersApiResponse } from '@/types/campers';
+import { Camper, CampersApiResponse } from '@/types/camper';
+
+//================================================================
 
 const cookieHeaders = async () => {
   const cookieStore = await cookies();

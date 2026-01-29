@@ -1,7 +1,8 @@
-/* import type { Metadata } from 'next';
+import { getCamperByIdServer } from '@/lib/api/serverApi';
+import type { Metadata } from 'next';
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const camper = await getCamperById(params.id);
+  const camper = await getCamperByIdServer(params.id);
 
   return {
     title: `${camper.name} | Campers Lightening`,
@@ -9,10 +10,15 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     openGraph: {
       title: camper.name,
       description: camper.description,
-      images: [{ url: camper.gallery[0] }],
+      images: [{ url: camper.gallery[0].original }],
+    },
+    twitter: {
+      title: camper.name,
+      description: camper.description,
+      images: [{ url: camper.gallery[0].original }],
     },
   };
-} */
+}
 
 const CamperPage = () => <div>Camper Page</div>;
 

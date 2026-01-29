@@ -1,8 +1,8 @@
 import axios, { type AxiosInstance } from 'axios';
 
-//===========================================================================
+//================================================================
 
-const BASE_URL = `${process.env.NEXT_PUBLIC_API_URL}/api`;
+const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api`;
 
 export const API_ENDPOINTS = {
   CAMPERS: '/campers',
@@ -10,6 +10,6 @@ export const API_ENDPOINTS = {
 };
 
 export const nextServer: AxiosInstance = axios.create({
-  baseURL: BASE_URL,
+  baseURL,
   withCredentials: true,
 });
