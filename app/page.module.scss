@@ -26,23 +26,22 @@
 
 .content h1 {
   font-weight: 600;
-  font-size: 3rem;
+  font-size: 32px;
   line-height: 0.67;
   color: $inputs-color;
-  margin-bottom: 1.5rem;
+  margin-bottom: 16px;
 
-  @media (min-width: 1440px) {
-    font-size: 5rem;
-    margin-bottom: 1rem;
+  @include media-min($bp-xxl) {
+    font-size: 48px;
   }
 }
 
 .content p {
   font-weight: 600;
-  font-size: 1.25rem;
+  font-size: 24px;
   line-height: 1.33;
   color: $inputs-color;
-  margin-bottom: 2.5rem;
+  margin-bottom: 40px;
 }
 
 .btn {
@@ -50,16 +49,16 @@
   align-items: center;
   justify-content: center;
 
-  width: 173px;
+  max-width: 173px;
+  width: 100%;
   height: 56px;
-  padding: 0 60px;
 
   border-radius: 200px;
   background-color: var(--button);
-  color: var(--white);
 
+  color: var(--white);
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 16px;
   line-height: 1.5;
   letter-spacing: -0.01em;
 
