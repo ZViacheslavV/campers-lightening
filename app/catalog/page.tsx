@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   description: 'Find the best travel truck for your purposes',
 };
 
+//================================================================
+
 const CatalogPage = () => (
   <section className={styles.catalogSection}>
     <h2 className="visually-hidden">Campers catalog</h2>
