@@ -1,0 +1,7 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.catalogSection {
+  padding-top: $container-top-padding-desktop;
+  padding-bottom: 52px;
+}
