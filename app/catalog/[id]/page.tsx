@@ -1,24 +1,28 @@
 import { getCamperByIdServer } from '@/lib/api/serverApi';
-import type { Metadata } from 'next';
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const camper = await getCamperByIdServer(params.id);
+type Props = {
+  params: Promise<{ id: string }>;
+};
+
+export const generateMetadata = async ({ params }: Props) => {
+  const { id } = await params;
+  const { name, description, gallery } = await getCamperByIdServer(id);
 
   return {
-    title: `${camper.name} | Campers Lightening`,
-    description: camper.description,
+    title: `${name} | Campers Lightening`,
+    description: description,
     openGraph: {
-      title: camper.name,
-      description: camper.description,
-      images: [{ url: camper.gallery[0].original }],
+      title: name,
+      description: description,
+      images: [{ url: gallery[0].original }],
     },
     twitter: {
-      title: camper.name,
-      description: camper.description,
-      images: [{ url: camper.gallery[0].original }],
+      title: name,
+      description: description,
+      images: [{ url: gallery[0].original }],
     },
   };
-}
+};
 
 const CamperPage = () => <div>Camper Page</div>;
 

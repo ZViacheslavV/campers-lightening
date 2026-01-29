@@ -1,14 +1,4 @@
-/* import css from './loading.module.scss';
-
-const Loading = () => (
-  <div className={css.overlay}>
-    <div className={css.spinner}></div>
-  </div>
-);
-
-export default Loading;
- */
-export default function Loading() {
+const Loading = () => {
   return (
     <div
       style={{
@@ -17,11 +7,11 @@ export default function Loading() {
         background: 'rgba(15, 15, 15, 0.08)',
         display: 'flex',
         justifyContent: 'center',
+        backdropFilter: 'blur(1px)',
         alignItems: 'center',
         zIndex: 9999,
       }}
     >
-      {/* Outer spinner */}
       <div
         style={{
           position: 'relative',
@@ -60,4 +50,6 @@ export default function Loading() {
       `}</style>
     </div>
   );
-}
+};
+
+export default Loading;

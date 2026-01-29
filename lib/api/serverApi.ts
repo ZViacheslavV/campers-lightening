@@ -18,7 +18,7 @@ export const getCampersCatalogServer = async () => {
   return data;
 };
 
-export const getCamperByIdServer = async (id: number | string) => {
+export const getCamperByIdServer = async (id: string) => {
   console.log('🟢 SERVER fetch camper by id'); // TODO del console.log
   const headers = await cookieHeaders();
   const { data } = await nextServer.get<Camper>(`${API_ENDPOINTS.CAMPERS_ID}${id}`, {

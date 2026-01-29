@@ -71,5 +71,6 @@
 }
 
 .center {
+  background-color: rgba(0, 0, 0, 0.5);
   @include flex-center(column, flex-start, center);
 }
