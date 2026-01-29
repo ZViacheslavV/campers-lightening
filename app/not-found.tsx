@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     siteName: 'Campers Lightening',
     images: [
       {
-        url: '/campers-og.jpg',
+        url: '/campers-og-meta.jpg',
         width: 1200,
         height: 630,
         alt: 'Page not found',

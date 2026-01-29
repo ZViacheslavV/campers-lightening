@@ -15,8 +15,10 @@ const CatalogPage = () => (
   <section className={styles.catalogSection}>
     <h2 className="visually-hidden">Campers catalog</h2>
     <Container>
-      <Filter />
-      <CampersList />
+      <div className={styles.catalogContentWrapper}>
+        <Filter />
+        <CampersList />
+      </div>
     </Container>
   </section>
 );

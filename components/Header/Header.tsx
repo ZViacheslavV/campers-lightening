@@ -8,7 +8,7 @@ import Container from '../ui/Container/Container';
 import styles from './Header.module.scss';
 
 const Header = () => {
-  const pathname = usePathname();
+  const path = usePathname();
 
   return (
     <header className={styles.header}>
@@ -23,14 +23,14 @@ const Header = () => {
           <nav className={styles.nav}>
             <ul className={styles.navList}>
               <li>
-                <Link href="/" className={clsx(styles.link, pathname === '/' && styles.active)}>
+                <Link href="/" className={clsx(styles.link, path === '/' && styles.active)}>
                   Home
                 </Link>
               </li>
               <li>
                 <Link
                   href="/catalog"
-                  className={clsx(styles.link, pathname === '/catalog' && styles.active)}
+                  className={clsx(styles.link, path === '/catalog' && styles.active)}
                 >
                   Catalog
                 </Link>
