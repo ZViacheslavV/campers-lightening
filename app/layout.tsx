@@ -4,7 +4,7 @@ import '@/styles/globals.scss';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 import Header from '@/components/Header/Header';
 
-const SITE_URL = ''; //TODO add SITE URL
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL!;
 
 const interFont = Inter({
   variable: '--font-inter',
