@@ -7,8 +7,8 @@ const Home = () => {
     <section className={styles.hero}>
       <Container>
         <div className={styles.content}>
-          <h1>Campers of your dreams</h1>
-          <p>You can find everything you want in our catalog</p>
+          <h1 className={styles.title}>Campers of your dreams</h1>
+          <p className={styles.description}>You can find everything you want in our catalog</p>
           <Link href="/catalog" className={styles.btn}>
             View Now
           </Link>
