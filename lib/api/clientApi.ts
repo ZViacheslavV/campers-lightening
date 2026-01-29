@@ -1,11 +1,20 @@
 import { Camper, CampersApiResponse } from '@/types/camper';
 import { API_ENDPOINTS, nextServer } from './api';
+import { cleanParams } from '@/helpers/cleanParams';
+import { CamperFetch } from '@/types/filter';
 
 //================================================================
 
-export const getCampersCatalog = async () => {
+export const getCampersCatalog = async ({ page = 1, limit = 4, filter }: CamperFetch) => {
+  const params = cleanParams({
+    page,
+    limit,
+    filter,
+  });
   console.log('🔵 CLIENT fetch campers catalog '); // TODO del console.log
-  const { data } = await nextServer.get<CampersApiResponse>(API_ENDPOINTS.CAMPERS);
+  const { data } = await nextServer.get<CampersApiResponse>(API_ENDPOINTS.CAMPERS, {
+    params,
+  });
   return data;
 };
 
