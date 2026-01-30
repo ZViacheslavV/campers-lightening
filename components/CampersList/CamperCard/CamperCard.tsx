@@ -1,15 +1,13 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
 
 import { useCampersStore } from '@/lib/store/camperStore';
 import { Camper } from '@/types/camper';
 import styles from './CamperCard.module.scss';
 import RedButton from '@/components/ui/RedButton/RedButton';
-import { MapIcon } from '@/components/ui/MapIcon/MapIcon';
-import { ICONS } from '@/lib/constants';
 import CamperEquipmentsList from '@/components/CamperEquipmentList/CamperEquipmentsList';
+import CamperHeaderMeta from '@/components/CamperHeaderMeta/CamperHeaderMeta';
 
 interface Props {
   camper: Camper;
@@ -23,7 +21,7 @@ export default function CamperCard({ camper }: Props) {
   return (
     <div className={styles.camperCard}>
       <Image
-        src={camper.gallery[0]?.thumb || '/placeholder.jpg'}
+        src={camper.gallery[0]?.thumb}
         alt={camper.name}
         width={292}
         height={320}
@@ -31,37 +29,12 @@ export default function CamperCard({ camper }: Props) {
       />
 
       <div className={styles.camperInfo}>
-        <div className={styles.headerLocRatingComp}>
-          <div className={styles.header}>
-            <h2>{camper.name}</h2>
-            <div className={styles.priceFav}>
-              <p>€{camper.price.toFixed(2)}</p>
-              <button onClick={() => toggleFavorite(camper.id)}>
-                <svg width="25" height="24" className={isFavorite ? styles.favorite : ''}>
-                  <use href={`/icons.svg#${ICONS.heart}`} />
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          <div className={styles.locationRating}>
-            <div className={styles.rating}>
-              <svg width="25" height="24" className={isFavorite ? styles.favorite : ''}>
-                <use href={`/icons.svg#${ICONS.star}`} />
-              </svg>
-            </div>
-            <Link href={`/catalog/${camper.id}/#reviews`}>
-              {camper.rating}({camper.reviews.length}
-              {camper.reviews.length === 1 ? ' review' : ' reviews'})
-            </Link>
-            <div className={styles.location}>
-              <MapIcon className={styles.mapIcon} />
-              <p className={styles.description}>
-                {camper.location.split(', ').reverse().join(', ')}
-              </p>
-            </div>
-          </div>
-        </div>
+        <CamperHeaderMeta
+          camper={camper}
+          isFavorite={isFavorite}
+          toggleFavorite={toggleFavorite}
+          showFavorite
+        />
 
         <p className={styles.description}>{camper.description}</p>
 

@@ -1,0 +1,108 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.error {
+  min-height: calc(100vh - 72px);
+  @include flex-center();
+  padding: 24px;
+  background: var(--inputs);
+}
+
+.card {
+  max-width: 420px;
+  width: 100%;
+  padding: 32px 28px;
+  border-radius: 16px;
+  background: var(--white);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 16px;
+  fill: var(--badges);
+  stroke: var(--main);
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--main);
+}
+
+.description {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.devError {
+  margin-bottom: 16px;
+  padding: 12px;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 8px;
+  background: #f6f6f6;
+  color: #b42318;
+  overflow-x: auto;
+}
+
+.retry {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 20px;
+  border-radius: 100px;
+  border: none;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  background: var(--main);
+  color: #fff;
+
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
+
+  &:hover {
+    background: #0f3c5f;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.back {
+  height: 44px;
+  padding: 0 20px;
+  border-radius: 100px;
+  border: 1px solid var(--main);
+  background: transparent;
+  color: var(--main);
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    background: var(--main);
+    color: #fff;
+  }
+}

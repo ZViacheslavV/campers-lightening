@@ -4,6 +4,7 @@ import { Camper, CampersApiResponse } from '@/types/camper';
 import { API_ENDPOINTS, PAGE_LIMIT } from '../constants';
 import { CamperFetch } from '@/types/filter';
 import { cleanParams } from '@/helpers/cleanParams';
+import { AxiosError } from 'axios';
 
 //================================================================
 
@@ -26,15 +27,22 @@ export const getCampersCatalogServer = async ({
   const params = cleanParams({
     page,
     limit,
-    filter,
+    ...filter,
   });
 
-  const { data } = await nextServer.get<CampersApiResponse>(API_ENDPOINTS.CAMPERS, {
-    headers,
-    params,
-  });
-
-  return data;
+  try {
+    const { data } = await nextServer.get<CampersApiResponse>(API_ENDPOINTS.CAMPERS, {
+      headers,
+      params,
+    });
+    return data;
+  } catch (err) {
+    const axiosError = err as AxiosError<CampersApiResponse>;
+    if (axiosError.response?.status === 404) {
+      return { items: [] };
+    }
+    throw err;
+  }
 };
 
 export const getCamperByIdServer = async (id: string) => {

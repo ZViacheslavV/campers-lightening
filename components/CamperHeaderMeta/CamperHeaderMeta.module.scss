@@ -1,0 +1,78 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.headerLocRatingComp {
+  .header {
+    @include flex-center(_, space-between, _);
+    margin-bottom: 8px;
+
+    h2 {
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 1.33;
+      overflow: hidden;
+    }
+
+    .priceFav {
+      @include flex-center();
+      gap: 12px;
+
+      button {
+        background-color: transparent;
+
+        svg {
+          width: 25px;
+          height: 24px;
+          @include transition(all);
+          color: var(--main);
+
+          &.favorite {
+            color: var(--button);
+          }
+        }
+      }
+    }
+  }
+
+  .locationRating {
+    @include flex-center(_, flex-start);
+
+    .rating {
+      @include flex-center();
+      gap: 4px;
+
+      svg {
+        width: 16px;
+        height: 16px;
+        fill: var(--rating);
+        transform: translateY(-5%);
+        margin-right: 4px;
+      }
+    }
+
+    .location {
+      @include flex-center();
+      gap: 4px;
+      margin-left: 16px;
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+    }
+
+    a {
+      font-size: 16px;
+      text-decoration: underline;
+    }
+  }
+}
+
+.price {
+  font-weight: 600;
+  font-size: 24px;
+}
