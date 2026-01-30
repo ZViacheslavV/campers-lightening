@@ -14,7 +14,7 @@ export default function FilterToggle({ label, icon, checked, onToggle }: FilterT
     <button
       type="button"
       onClick={onToggle}
-      className={clsx(styles.option, {
+      className={clsx(styles.optionBtn, {
         [styles.active]: checked,
       })}
     >

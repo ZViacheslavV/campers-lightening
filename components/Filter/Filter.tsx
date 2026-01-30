@@ -123,7 +123,9 @@ export default function Filters() {
         ))}
       </div>
 
-      <RedButton onClick={applySearch}>Search</RedButton>
+      <RedButton onClick={applySearch} className={styles.redBtn}>
+        Search
+      </RedButton>
     </div>
   );
 }
