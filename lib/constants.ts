@@ -15,8 +15,9 @@ export const ICONS: Record<IconKey, string> = {
   panelTruck: 'icon-grid-1x2',
   fullyIntegrated: 'icon-grid',
   alcove: 'icon-grid-3x3-gap',
+
   automatic: 'icon-diagram',
-  radio: '',
+  radio: 'icon-radios',
   refrigerator: 'icon-solar_fridge-outline',
   microwave: 'icon-microwave',
   gas: 'icon-gas-stove',

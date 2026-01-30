@@ -25,12 +25,12 @@ export const getCampersCatalog = async ({
       params,
     });
     return data;
-  } catch (error) {
-    const axiosError = error as AxiosError<CampersApiResponse>;
+  } catch (err) {
+    const axiosError = err as AxiosError<CampersApiResponse>;
     if (axiosError.response?.status === 404) {
       return { items: [] };
     }
-    throw error;
+    throw err;
   }
 };
 

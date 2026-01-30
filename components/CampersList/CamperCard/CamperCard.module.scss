@@ -78,7 +78,6 @@
       .locationRating {
         display: flex;
         align-items: center;
-        /* gap: 1rem; */
 
         .rating {
           display: flex;
@@ -88,14 +87,22 @@
           svg {
             width: 16px;
             height: 16px;
-            /*  fill: var(--rating); */
+            fill: var(--rating);
+            transform: translateY(-5%);
+            margin-right: 4px;
           }
         }
 
         .location {
           display: flex;
           align-items: center;
-          gap: 0.25rem;
+          gap: 4px;
+          margin-left: 16px;
+
+          svg {
+            width: 16px;
+            height: 16px;
+          }
 
           p {
             font-size: 16px;
@@ -113,7 +120,8 @@
       font-size: 16px;
       line-height: 1.5;
       color: var(--text);
-      max-height: 3rem;
+      max-width: 525px;
+      white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }

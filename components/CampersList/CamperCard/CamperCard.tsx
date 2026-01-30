@@ -9,6 +9,7 @@ import styles from './CamperCard.module.scss';
 import RedButton from '@/components/ui/RedButton/RedButton';
 import { MapIcon } from '@/components/ui/MapIcon/MapIcon';
 import { ICONS } from '@/lib/constants';
+import CamperEquipmentsList from '@/components/CamperEquipmentList/CamperEquipmentsList';
 
 interface Props {
   camper: Camper;
@@ -45,18 +46,26 @@ export default function CamperCard({ camper }: Props) {
 
           <div className={styles.locationRating}>
             <div className={styles.rating}>
-              <MapIcon className={styles.mapIcon} />
-              {camper.rating}
+              <svg width="25" height="24" className={isFavorite ? styles.favorite : ''}>
+                <use href={`/icons.svg#${ICONS.star}`} />
+              </svg>
             </div>
             <Link href={`/catalog/${camper.id}/#reviews`}>
-              ({camper.reviews.length} {camper.reviews.length === 1 ? 'review' : 'reviews'})
+              {camper.rating}({camper.reviews.length}
+              {camper.reviews.length === 1 ? ' review' : ' reviews'})
             </Link>
+            <div className={styles.location}>
+              <MapIcon className={styles.mapIcon} />
+              <p className={styles.description}>
+                {camper.location.split(', ').reverse().join(', ')}
+              </p>
+            </div>
           </div>
         </div>
 
         <p className={styles.description}>{camper.description}</p>
 
-        <div className="equipmentList"></div>
+        <CamperEquipmentsList camper={camper} />
 
         <RedButton as="link" href={`/catalog/${camper.id}`}>
           Show More
