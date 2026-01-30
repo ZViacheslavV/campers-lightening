@@ -32,80 +32,80 @@
   .camperInfo {
     display: flex;
     flex-direction: column;
-    flex: 1;
+    gap: 24px;
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      h2 {
-        font-weight: 600;
-        font-size: 24px;
-        line-height: 1.33;
-        max-height: 2rem;
-        overflow: hidden;
-      }
-
-      .priceFav {
+    .headerLocRatingComp {
+      .header {
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        gap: 1rem;
+        margin-bottom: 8px;
 
-        p {
+        h2 {
           font-weight: 600;
           font-size: 24px;
+          line-height: 1.33;
+          overflow: hidden;
         }
 
-        button {
-          padding: 0.5rem;
-          border-radius: 8px;
-          cursor: pointer;
+        .priceFav {
+          display: flex;
+          align-items: center;
+          gap: 12px;
 
-          svg {
-            width: 25px;
-            height: 24px;
-            transition: all 0.3s;
-            fill: var(--main);
+          p {
+            font-weight: 600;
+            font-size: 24px;
+          }
 
-            &.favorite {
-              fill: var(--button);
+          button {
+            background-color: transparent;
+
+            svg {
+              width: 25px;
+              height: 24px;
+              @include transition(all);
+              color: var(--main);
+
+              &.favorite {
+                color: var(--button);
+              }
             }
           }
         }
       }
-    }
 
-    .locationRating {
-      display: flex;
-      align-items: center;
-      /* gap: 1rem; */
-
-      .rating {
+      .locationRating {
         display: flex;
         align-items: center;
-        gap: 4px;
+        /* gap: 1rem; */
 
-        svg {
-          width: 16px;
-          height: 16px;
-          /*  fill: var(--rating); */
+        .rating {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+
+          svg {
+            width: 16px;
+            height: 16px;
+            /*  fill: var(--rating); */
+          }
         }
-      }
 
-      .location {
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
+        .location {
+          display: flex;
+          align-items: center;
+          gap: 0.25rem;
 
-        p {
+          p {
+            font-size: 16px;
+          }
+        }
+
+        a {
           font-size: 16px;
+          text-decoration: underline;
         }
-      }
-
-      a {
-        font-size: 16px;
-        text-decoration: underline;
       }
     }
 
@@ -117,23 +117,5 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-
-    /*    .showMoreBtn { //TODO del comments
-      width: 166px;
-      height: 56px;
-      border-radius: 200px;
-      background-color: var(--button);
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 500;
-      text-decoration: none;
-      @include transition(all);
-
-      &:hover {
-        background-color: var(--button-hover);
-      }
-    } */
   }
 }

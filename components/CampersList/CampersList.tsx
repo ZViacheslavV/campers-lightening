@@ -8,7 +8,7 @@ import styles from './CampersList.module.scss';
 
 export default function CampersList() {
   // const { campers, favorites, loading, hasMore, filter } = useCampersStore(); //TODO del comments
-  //const filter = useCampersStore((state) => state.filter);
+  // const filter = useCampersStore((state) => state.filter);
   const campers = useCampersStore((state) => state.campers);
   const hasMore = useCampersStore((state) => state.hasMore);
   const loading = useCampersStore((state) => state.loading);

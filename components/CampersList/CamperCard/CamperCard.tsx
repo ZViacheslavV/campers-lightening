@@ -8,6 +8,7 @@ import { Camper } from '@/types/camper';
 import styles from './CamperCard.module.scss';
 import RedButton from '@/components/ui/RedButton/RedButton';
 import { MapIcon } from '@/components/ui/MapIcon/MapIcon';
+import { ICONS } from '@/lib/constants';
 
 interface Props {
   camper: Camper;
@@ -29,29 +30,33 @@ export default function CamperCard({ camper }: Props) {
       />
 
       <div className={styles.camperInfo}>
-        <div className={styles.header}>
-          <h2>{camper.name}</h2>
-          <div className={styles.priceFav}>
-            <p>€{camper.price.toFixed(2)}</p>
-            <button onClick={() => toggleFavorite(camper.id)}>
-              <svg width="26" height="24" className={isFavorite ? 'favorite' : ''}>
-                <use href="/icons.svg#icon-heart" />
-              </svg>
-            </button>
+        <div className={styles.headerLocRatingComp}>
+          <div className={styles.header}>
+            <h2>{camper.name}</h2>
+            <div className={styles.priceFav}>
+              <p>€{camper.price.toFixed(2)}</p>
+              <button onClick={() => toggleFavorite(camper.id)}>
+                <svg width="25" height="24" className={isFavorite ? styles.favorite : ''}>
+                  <use href={`/icons.svg#${ICONS.heart}`} />
+                </svg>
+              </button>
+            </div>
           </div>
-        </div>
 
-        <div className={styles.locationRating}>
-          <div className={styles.rating}>
-            <MapIcon className={styles.mapIcon} />
-            {camper.rating}
+          <div className={styles.locationRating}>
+            <div className={styles.rating}>
+              <MapIcon className={styles.mapIcon} />
+              {camper.rating}
+            </div>
+            <Link href={`/catalog/${camper.id}/#reviews`}>
+              ({camper.reviews.length} {camper.reviews.length === 1 ? 'review' : 'reviews'})
+            </Link>
           </div>
-          <Link href={`/catalog/${camper.id}/#reviews`}>
-            ({camper.reviews.length} {camper.reviews.length === 1 ? 'review' : 'reviews'})
-          </Link>
         </div>
 
         <p className={styles.description}>{camper.description}</p>
+
+        <div className="equipmentList"></div>
 
         <RedButton as="link" href={`/catalog/${camper.id}`}>
           Show More
