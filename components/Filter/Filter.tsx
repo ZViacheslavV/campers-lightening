@@ -7,7 +7,6 @@ import { useCampersStore } from '@/lib/store/camperStore';
 import { CamperForm } from '@/types/camper';
 import { CamperFilter, Equipment } from '@/types/filter';
 import { ICONS } from '@/lib/constants';
-import { capitalize } from '@/helpers/capitalize';
 
 import styles from './Filter.module.scss';
 import FilterToggle from './FilterToggle/FilterToggle';
@@ -107,7 +106,7 @@ export default function Filters() {
             return (
               <FilterToggle
                 key={equipmentKey}
-                label={capitalize(equipmentKey)}
+                label={equipmentKey}
                 icon={ICONS[equipmentKey]}
                 checked={draftFilters.equipment?.includes(equipmentKey) ?? false}
                 onToggle={() => toggleEquipment(equipmentKey)}

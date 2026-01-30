@@ -32,6 +32,7 @@ export default function CampersList() {
       )}
 
       {!hasMore && campers.length > 0 && <p className={styles.noMore}>No more campers. </p>}
+      {campers.length === 0 && <p className={styles.noMore}>No search results. </p>}
     </div>
   );
 }

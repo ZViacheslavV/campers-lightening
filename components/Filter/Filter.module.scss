@@ -72,42 +72,6 @@
   margin-bottom: 32px;
 }
 
-.option {
-  width: 112px;
-  height: 96px;
-  border-radius: 12px;
-  border: 1px solid var(--gray-light);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  @include transition(border-color);
-
-  &.active {
-    border-color: var(--button);
-  }
-}
-
-.optionIcon {
-  width: 24px;
-  height: 24px;
-}
-
 .redBtn {
   margin-top: 8px;
 }
-
-/* .applyButton { // TODO del comments
-  width: 166px;
-  height: 56px;
-  border-radius: 200px;
-  background: var(--button);
-  color: white;
-  font-weight: 500;
-  transition: background 0.2s ease;
-
-  &:hover {
-    background: var(--button-hover);
-  }
-} */

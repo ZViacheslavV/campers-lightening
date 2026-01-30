@@ -2,8 +2,7 @@
 @use '@/styles/mixins' as *;
 
 .camperCard {
-  display: flex;
-  flex-direction: row;
+  @include flex-center();
   gap: 24px;
   border: 1px solid var(--gray-light);
   border-radius: 20px;
@@ -13,7 +12,6 @@
   background-color: #fff;
 
   @include media-min($bp-xxl) {
-    // flex-direction: row;
     height: 368px;
   }
 
@@ -36,9 +34,7 @@
 
     .headerLocRatingComp {
       .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        @include flex-center(_, space-between, _);
         margin-bottom: 8px;
 
         h2 {
@@ -49,8 +45,7 @@
         }
 
         .priceFav {
-          display: flex;
-          align-items: center;
+          @include flex-center();
           gap: 12px;
 
           p {
@@ -76,12 +71,10 @@
       }
 
       .locationRating {
-        display: flex;
-        align-items: center;
+        @include flex-center(_, flex-start);
 
         .rating {
-          display: flex;
-          align-items: center;
+          @include flex-center();
           gap: 4px;
 
           svg {
@@ -94,8 +87,7 @@
         }
 
         .location {
-          display: flex;
-          align-items: center;
+          @include flex-center();
           gap: 4px;
           margin-left: 16px;
 
