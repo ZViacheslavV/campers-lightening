@@ -1,8 +1,7 @@
 import clsx from 'clsx';
 import css from './page.module.scss';
 import { Metadata } from 'next';
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL!;
+import { SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Campers Lightening | 404 - Page not found',

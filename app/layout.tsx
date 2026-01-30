@@ -3,8 +3,7 @@ import { Inter } from 'next/font/google';
 import '@/styles/globals.scss';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 import Header from '@/components/Header/Header';
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL!;
+import { SITE_URL } from '@/lib/constants';
 
 const interFont = Inter({
   variable: '--font-inter',

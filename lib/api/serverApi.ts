@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
-import { API_ENDPOINTS, nextServer } from './api';
+import { nextServer } from './api';
 import { Camper, CampersApiResponse } from '@/types/camper';
+import { API_ENDPOINTS } from '../constants';
 
 //================================================================
 
@@ -21,7 +22,7 @@ export const getCampersCatalogServer = async () => {
 export const getCamperByIdServer = async (id: string) => {
   console.log('🟢 SERVER fetch camper by id'); // TODO del console.log
   const headers = await cookieHeaders();
-  const { data } = await nextServer.get<Camper>(`${API_ENDPOINTS.CAMPERS_ID}${id}`, {
+  const { data } = await nextServer.get<Camper>(API_ENDPOINTS.CAMPER_BY_ID(id), {
     headers,
   });
   return data;

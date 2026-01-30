@@ -1,3 +1,6 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
 .filters {
   width: 360px;
 }
@@ -25,27 +28,41 @@
   }
 }
 
+.inputWrapper:has(input:focus) .icon {
+  fill: var(--main);
+}
+
 .icon {
   position: absolute;
   top: 50%;
   left: 16px;
   transform: translateY(-50%);
-  color: var(--gray);
+  fill: var(--gray);
+}
+
+.active {
+  fill: var(--main);
 }
 
 .sectionTitle {
   margin-bottom: 32px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
 }
 
 .subTitle {
   font-size: 20px;
   font-weight: 600;
-}
 
-.divider {
-  height: 1px;
-  background: var(--gray-light);
-  margin: 24px 0;
+  &::after {
+    content: '';
+    display: block;
+    height: 1px;
+    background-color: var(--gray-light);
+    margin: 24px 0;
+  }
 }
 
 .optionsGrid {
@@ -65,8 +82,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  cursor: pointer;
-  transition: border-color 0.2s ease;
+  @include transition(border-color);
 
   &.active {
     border-color: var(--button);
@@ -78,10 +94,10 @@
   height: 24px;
 }
 
-.applyButton {
+/* .applyButton { // TODO del comments
   width: 166px;
   height: 56px;
-  border-radius: 999px;
+  border-radius: 200px;
   background: var(--button);
   color: white;
   font-weight: 500;
@@ -90,4 +106,4 @@
   &:hover {
     background: var(--button-hover);
   }
-}
+} */

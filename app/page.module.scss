@@ -3,7 +3,6 @@
 
 .hero {
   position: relative;
-  // min-height: 696px; //TODO check layout height
   min-height: calc(100vh - 73px);
   background-image: url('/home-hero.jpg');
   background-size: cover;

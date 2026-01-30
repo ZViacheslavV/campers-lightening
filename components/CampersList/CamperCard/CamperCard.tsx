@@ -2,9 +2,12 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Map } from 'lucide-react';
+
 import { useCampersStore } from '@/lib/store/camperStore';
 import { Camper } from '@/types/camper';
+import styles from './CamperCard.module.scss';
+import RedButton from '@/components/ui/RedButton/RedButton';
+import { MapIcon } from '@/components/ui/MapIcon/MapIcon';
 
 interface Props {
   camper: Camper;
@@ -16,19 +19,19 @@ export default function CamperCard({ camper }: Props) {
   const isFavorite = favorites.includes(camper.id);
 
   return (
-    <div className="camper-card">
+    <div className={styles.camperCard}>
       <Image
         src={camper.gallery[0]?.thumb || '/placeholder.jpg'}
         alt={camper.name}
         width={292}
         height={320}
-        className="camper-thumb"
+        className={styles.camperThumb}
       />
 
-      <div className="camper-info">
-        <div className="header">
+      <div className={styles.camperInfo}>
+        <div className={styles.header}>
           <h2>{camper.name}</h2>
-          <div className="price-fav">
+          <div className={styles.priceFav}>
             <p>€{camper.price.toFixed(2)}</p>
             <button onClick={() => toggleFavorite(camper.id)}>
               <svg width="26" height="24" className={isFavorite ? 'favorite' : ''}>
@@ -38,9 +41,9 @@ export default function CamperCard({ camper }: Props) {
           </div>
         </div>
 
-        <div className="location-rating">
-          <div className="rating">
-            <Map size="16" />
+        <div className={styles.locationRating}>
+          <div className={styles.rating}>
+            <MapIcon className={styles.mapIcon} />
             {camper.rating}
           </div>
           <Link href={`/catalog/${camper.id}/#reviews`}>
@@ -48,11 +51,11 @@ export default function CamperCard({ camper }: Props) {
           </Link>
         </div>
 
-        <p className="description">{camper.description}</p>
+        <p className={styles.description}>{camper.description}</p>
 
-        <Link href={`/catalog/${camper.id}`} className="show-more-btn">
+        <RedButton as="link" href={`/catalog/${camper.id}`}>
           Show More
-        </Link>
+        </RedButton>
       </div>
     </div>
   );

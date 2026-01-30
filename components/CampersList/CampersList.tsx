@@ -4,6 +4,7 @@ import { useCampersStore } from '@/lib/store/camperStore';
 import { useCampersApi } from '@/hooks/useCampersApi';
 import Loader from '@/app/loading';
 import CamperCard from './CamperCard/CamperCard';
+import styles from './CampersList.module.scss';
 
 export default function CampersList() {
   // const { campers, favorites, loading, hasMore, filter } = useCampersStore(); //TODO del comments
@@ -17,7 +18,7 @@ export default function CampersList() {
   if (loading && campers.length === 0) return <Loader />;
 
   return (
-    <div className="campers-list">
+    <div className={styles.campersList}>
       {campers.map((camper) => (
         <CamperCard key={camper.id} camper={camper} />
       ))}
@@ -25,12 +26,12 @@ export default function CampersList() {
       {loading && campers.length > 0 && <Loader />}
 
       {hasMore && !loading && (
-        <button className="load-more-btn" onClick={loadMore}>
+        <button className={styles.loadMoreBtn} onClick={loadMore}>
           Load More
         </button>
       )}
 
-      {!hasMore && campers.length > 0 && <p className="no-more">No more campers. </p>}
+      {!hasMore && campers.length > 0 && <p className={styles.noMore}>No more campers. </p>}
     </div>
   );
 }

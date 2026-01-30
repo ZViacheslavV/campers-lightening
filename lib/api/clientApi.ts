@@ -1,7 +1,8 @@
 import { Camper, CampersApiResponse } from '@/types/camper';
-import { API_ENDPOINTS, nextServer } from './api';
+import { nextServer } from './api';
 import { cleanParams } from '@/helpers/cleanParams';
 import { CamperFetch } from '@/types/filter';
+import { API_ENDPOINTS } from '../constants';
 
 //================================================================
 
@@ -18,8 +19,12 @@ export const getCampersCatalog = async ({ page = 1, limit = 4, filter }: CamperF
   return data;
 };
 
-export const getCamperById = async (id: number | string) => {
+export const getCamperById = async (id: string) => {
   console.log('🔵 CLIENT fetch camper by id'); // TODO del console.log
-  const { data } = await nextServer.get<Camper>(`${API_ENDPOINTS.CAMPERS_ID}${id}`);
+
+  const url = API_ENDPOINTS.CAMPER_BY_ID(id);
+  console.log('FETCH URL:', url);
+
+  const { data } = await nextServer.get<Camper>(API_ENDPOINTS.CAMPER_BY_ID(id));
   return data;
 };

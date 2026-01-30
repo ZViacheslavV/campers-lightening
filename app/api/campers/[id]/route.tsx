@@ -1,9 +1,9 @@
-import { API_ENDPOINTS } from '@/lib/api/api';
 import { isAxiosError } from 'axios';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 import { logErrorResponse } from '../../_utils/utils';
 import { api } from '../../api';
+import { API_ENDPOINTS } from '@/lib/constants';
 
 export const dynamic = 'force-dynamic';
 
@@ -16,7 +16,7 @@ export async function GET(request: Request, { params }: Props) {
   const { id } = await params;
 
   try {
-    const res = await api.get(`${API_ENDPOINTS.CAMPERS_ID}${id}`, {
+    const res = await api.get(API_ENDPOINTS.CAMPER_BY_ID(id), {
       headers: { Cookie: cookieStore.toString() },
     });
     return NextResponse.json(res.data, { status: res.status });

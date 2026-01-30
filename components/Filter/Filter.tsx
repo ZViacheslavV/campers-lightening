@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import { Map } from 'lucide-react';
 
 import { useCampersStore } from '@/lib/store/camperStore';
 import { CamperForm } from '@/types/camper';
@@ -9,6 +8,11 @@ import { CamperFilter, Equipment } from '@/types/filter';
 
 import styles from './Filter.module.scss';
 import FilterToggle from './FilterToggle/FilterToggle';
+import RedButton from '../ui/RedButton/RedButton';
+import { capitalize } from '@/helpers/capitalize';
+import { MapIcon } from '../ui/MapIcon/MapIcon';
+import { ICONS } from '@/lib/constants';
+import clsx from 'clsx';
 
 const EQUIPMENT_OPTIONS: readonly Equipment[] = ['AC', 'kitchen', 'TV', 'bathroom'] as const;
 
@@ -51,7 +55,7 @@ export default function Filters() {
     }));
   }, []);
 
-  const applyFilters = useCallback(() => {
+  const applySearch = useCallback(() => {
     setFilter({
       location: draftFilters.location || undefined,
       form: draftFilters.form,
@@ -65,8 +69,13 @@ export default function Filters() {
       <div className={styles.field}>
         <label className={styles.label}>Location</label>
         <div className={styles.inputWrapper}>
-          <Map className={styles.icon} />
-          <div className="location"></div>
+          <MapIcon
+            className={clsx(
+              styles.icon,
+              draftFilters.location && draftFilters.location.length > 0 && styles.active
+            )}
+          />
+          <div className={styles.location}></div>
           <input
             type="text"
             placeholder="City"
@@ -79,12 +88,11 @@ export default function Filters() {
       <h3 className={styles.sectionTitle}>Filters</h3>
 
       <h4 className={styles.subTitle}>Vehicle equipment</h4>
-      <div className={styles.divider} />
 
       <div className={styles.optionsGrid}>
         <FilterToggle
           label="Automatic"
-          /* icon={icons.automatic} */
+          icon={ICONS.automatic}
           checked={draftFilters.transmission === 'automatic'}
           onToggle={toggleTransmission}
         />
@@ -92,8 +100,8 @@ export default function Filters() {
         {EQUIPMENT_OPTIONS.map((item) => (
           <FilterToggle
             key={item}
-            label={item}
-            /* icon={icons[item]} */
+            label={capitalize(item)}
+            icon={ICONS[item]}
             checked={draftFilters.equipment?.includes(item) ?? false}
             onToggle={() => toggleEquipment(item)}
           />
@@ -101,14 +109,13 @@ export default function Filters() {
       </div>
 
       <h4 className={styles.subTitle}>Vehicle type</h4>
-      <div className={styles.divider} />
 
       <div className={styles.optionsGrid}>
         {VEHICLE_TYPES.map(({ label, value }) => (
           <FilterToggle
             key={value}
             label={label}
-            /* icon={icons[value]} */
+            icon={ICONS[value]}
             checked={draftFilters.form === value}
             onToggle={() => updateDraft('form', value)}
             isRadio
@@ -116,9 +123,7 @@ export default function Filters() {
         ))}
       </div>
 
-      <button className={styles.applyButton} onClick={applyFilters}>
-        Apply filters
-      </button>
+      <RedButton onClick={applySearch}>Search</RedButton>
     </div>
   );
 }
