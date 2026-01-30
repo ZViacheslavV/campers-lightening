@@ -14,8 +14,6 @@ import FilterToggle from './FilterToggle/FilterToggle';
 import RedButton from '../ui/RedButton/RedButton';
 import { MapIcon } from '../ui/MapIcon/MapIcon';
 
-// const EQUIPMENT_OPTIONS: readonly Equipment[] = ['AC', 'kitchen', 'TV', 'bathroom'] as const; //TODO del comments
-
 const VEHICLE_TYPES: readonly { label: string; value: CamperForm }[] = [
   { label: 'Van', value: 'panelTruck' },
   { label: 'Fully Integrated', value: 'fullyIntegrated' },
@@ -28,7 +26,7 @@ const VEHICLE_EQUIPMENT_ORDER: (Equipment | 'automatic')[] = [
   'kitchen',
   'TV',
   'bathroom',
-];
+] as const;
 
 export default function Filters() {
   const { filter, setFilter } = useCampersStore();
