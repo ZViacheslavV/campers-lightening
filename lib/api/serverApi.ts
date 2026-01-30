@@ -1,7 +1,9 @@
 import { cookies } from 'next/headers';
 import { nextServer } from './api';
 import { Camper, CampersApiResponse } from '@/types/camper';
-import { API_ENDPOINTS } from '../constants';
+import { API_ENDPOINTS, PAGE_LIMIT } from '../constants';
+import { CamperFetch } from '@/types/filter';
+import { cleanParams } from '@/helpers/cleanParams';
 
 //================================================================
 
@@ -12,10 +14,26 @@ const cookieHeaders = async () => {
 
 //================================================================
 
-export const getCampersCatalogServer = async () => {
-  console.log('🟢 SERVER fetch campers catalog '); // TODO del console.log
+export const getCampersCatalogServer = async ({
+  page = 1,
+  limit = PAGE_LIMIT,
+  filter,
+}: CamperFetch = {}) => {
+  console.log('🟢 SERVER fetch campers catalog'); // TODO del console.log
+
   const headers = await cookieHeaders();
-  const { data } = await nextServer.get<CampersApiResponse>(API_ENDPOINTS.CAMPERS, { headers });
+
+  const params = cleanParams({
+    page,
+    limit,
+    filter,
+  });
+
+  const { data } = await nextServer.get<CampersApiResponse>(API_ENDPOINTS.CAMPERS, {
+    headers,
+    params,
+  });
+
   return data;
 };
 
