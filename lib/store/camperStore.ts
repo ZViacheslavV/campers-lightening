@@ -1,4 +1,3 @@
-// lib/store/campersStore.ts
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { Camper } from '@/types/camper';

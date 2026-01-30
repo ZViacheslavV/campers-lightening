@@ -1,6 +1,6 @@
 import CamperPageClient from '@/components/CamperPageClient/CamperPageClient';
 import { getCamperByIdServer } from '@/lib/api/serverApi';
-import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
+/* import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query'; */
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -30,20 +30,21 @@ export const generateMetadata = async ({ params }: Props) => {
 
 //================================================================
 
-const CamperPage = async ({ params }: Props) => {
-  const queryClient = new QueryClient();
+const CamperPage = async (/* { params }: Props */) => {
+  //TODO try to prefetch or del
+  /* const queryClient = new QueryClient();
 
   const { id } = await params;
 
   queryClient.prefetchQuery({
     queryKey: ['truck', id],
     queryFn: () => getCamperByIdServer(id),
-  });
+  }); */
 
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <CamperPageClient />
-    </HydrationBoundary>
+    // <HydrationBoundary state={dehydrate(queryClient)}>
+    <CamperPageClient />
+    // </HydrationBoundary>
   );
 };
 
