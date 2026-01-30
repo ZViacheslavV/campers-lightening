@@ -9,7 +9,6 @@ const PAGE_LIMIT = 4;
 
 export const useCampersApi = () => {
   const filter = useCampersStore((s) => s.filter);
-  const page = useCampersStore((s) => s.page);
   const hasMore = useCampersStore((s) => s.hasMore);
   const loading = useCampersStore((s) => s.loading);
 
@@ -29,7 +28,7 @@ export const useCampersApi = () => {
 
       const page = reset ? 1 : useCampersStore.getState().page + 1;
 
-      console.log('FETCH PAGE', page);
+      console.log('FETCH PAGE', page); //TODO del console.log
 
       try {
         const res = await getCampersCatalog({

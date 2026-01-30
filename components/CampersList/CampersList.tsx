@@ -1,11 +1,9 @@
 'use client';
 
-import { useEffect } from 'react';
-
 import { useCampersStore } from '@/lib/store/camperStore';
 import { useCampersApi } from '@/hooks/useCampersApi';
 import Loader from '@/app/loading';
-import CamperCard from '../CamperCard/CamperCard';
+import CamperCard from './CamperCard/CamperCard';
 
 export default function CampersList() {
   // const { campers, favorites, loading, hasMore, filter } = useCampersStore(); //TODO del comments
@@ -14,11 +12,7 @@ export default function CampersList() {
   const hasMore = useCampersStore((state) => state.hasMore);
   const loading = useCampersStore((state) => state.loading);
 
-  const { /* fetchCampers, */ loadMore } = useCampersApi();
-
-  /*   useEffect(() => {
-    fetchCampers(true);
-  }, [filter, fetchCampers]); */
+  const { loadMore } = useCampersApi();
 
   if (loading && campers.length === 0) return <Loader />;
 

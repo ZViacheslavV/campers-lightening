@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-// import { Map } from 'lucide-react';
+import { Map } from 'lucide-react';
 import { useCampersStore } from '@/lib/store/camperStore';
 import { Camper } from '@/types/camper';
 
@@ -31,7 +31,7 @@ export default function CamperCard({ camper }: Props) {
           <div className="price-fav">
             <p>€{camper.price.toFixed(2)}</p>
             <button onClick={() => toggleFavorite(camper.id)}>
-              <svg className={isFavorite ? 'favorite' : ''}>
+              <svg width="26" height="24" className={isFavorite ? 'favorite' : ''}>
                 <use href="/icons.svg#icon-heart" />
               </svg>
             </button>
@@ -40,18 +40,12 @@ export default function CamperCard({ camper }: Props) {
 
         <div className="location-rating">
           <div className="rating">
-            <svg>
-              <use href="/icons.svg#icon-star" />
-            </svg>
+            <Map size="16" />
             {camper.rating}
           </div>
           <Link href={`/catalog/${camper.id}/#reviews`}>
             ({camper.reviews.length} {camper.reviews.length === 1 ? 'review' : 'reviews'})
           </Link>
-          <div className="location">
-            {/* <Map size={16} /> */}
-            <p>{camper.location}</p>
-          </div>
         </div>
 
         <p className="description">{camper.description}</p>

@@ -1,7 +1,7 @@
 import { Camper, CampersApiResponse } from '@/types/camper';
 import { API_ENDPOINTS, nextServer } from './api';
 import { cleanParams } from '@/helpers/cleanParams';
-import { CamperFetch, CamperFilterParams } from '@/types/filter';
+import { CamperFetch } from '@/types/filter';
 
 //================================================================
 

@@ -19,10 +19,6 @@ const BOOLEAN_EQUIPMENT_FILTER_KEYS = [
 /* Query keys that represent string-based filters.*/
 const STRING_FILTER_KEYS = ['location', 'form', 'transmission', 'engine'] as const;
 
-type BooleanEquipmentFilterKey = (typeof BOOLEAN_EQUIPMENT_FILTER_KEYS)[number];
-
-type StringFilterKey = (typeof STRING_FILTER_KEYS)[number];
-
 type QueryParams = Record<string, string | number | boolean>;
 
 /*  Extracts pagination params from URLSearchParams. */
