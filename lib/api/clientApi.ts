@@ -3,6 +3,7 @@ import { nextServer } from './api';
 import { cleanParams } from '@/helpers/cleanParams';
 import { CamperFetch } from '@/types/filter';
 import { API_ENDPOINTS, PAGE_LIMIT } from '../constants';
+import { AxiosError } from 'axios';
 
 //================================================================
 
@@ -14,13 +15,23 @@ export const getCampersCatalog = async ({
   const params = cleanParams({
     page,
     limit,
-    filter,
+    ...filter,
   });
+
   console.log('🔵 CLIENT fetch campers catalog '); // TODO del console.log
-  const { data } = await nextServer.get<CampersApiResponse>(API_ENDPOINTS.CAMPERS, {
-    params,
-  });
-  return data;
+
+  try {
+    const { data } = await nextServer.get<CampersApiResponse>(API_ENDPOINTS.CAMPERS, {
+      params,
+    });
+    return data;
+  } catch (error) {
+    const axiosError = error as AxiosError<CampersApiResponse>;
+    if (axiosError.response?.status === 404) {
+      return { items: [] };
+    }
+    throw error;
+  }
 };
 
 export const getCamperById = async (id: string) => {
