@@ -1,5 +1,7 @@
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL!;
 
+export const PAGE_LIMIT = 4;
+
 export const API_ENDPOINTS = {
   CAMPERS: '/campers',
   CAMPER_BY_ID: (id: string) => `/campers/${id}`,

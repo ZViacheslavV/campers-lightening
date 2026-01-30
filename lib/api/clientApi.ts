@@ -2,11 +2,15 @@ import { Camper, CampersApiResponse } from '@/types/camper';
 import { nextServer } from './api';
 import { cleanParams } from '@/helpers/cleanParams';
 import { CamperFetch } from '@/types/filter';
-import { API_ENDPOINTS } from '../constants';
+import { API_ENDPOINTS, PAGE_LIMIT } from '../constants';
 
 //================================================================
 
-export const getCampersCatalog = async ({ page = 1, limit = 4, filter }: CamperFetch = {}) => {
+export const getCampersCatalog = async ({
+  page = 1,
+  limit = PAGE_LIMIT,
+  filter,
+}: CamperFetch = {}) => {
   const params = cleanParams({
     page,
     limit,

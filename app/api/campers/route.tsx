@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { isAxiosError } from 'axios';
 import { api } from '../api';
-import { API_ENDPOINTS } from '@/lib/constants';
+import { API_ENDPOINTS, PAGE_LIMIT } from '@/lib/constants';
 
 // Query keys that represent boolean equipment filters. Presence of the key means `true`.
 const BOOLEAN_EQUIPMENT_FILTER_KEYS = [
@@ -24,7 +24,7 @@ type QueryParams = Record<string, string | number | boolean>;
 // Extracts pagination params from URLSearchParams.
 function parsePaginationParams(searchParams: URLSearchParams) {
   const page = Number(searchParams.get('page')) || 1;
-  const limit = Number(searchParams.get('limit')) || 4;
+  const limit = Number(searchParams.get('limit')) || PAGE_LIMIT;
 
   return { page, limit };
 }

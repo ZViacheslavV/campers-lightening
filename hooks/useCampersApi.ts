@@ -1,11 +1,9 @@
-// hooks/useCampersApi.ts
 'use client';
 
 import { useCallback, useEffect, useRef } from 'react';
 import { getCampersCatalog } from '@/lib/api/clientApi';
 import { useCampersStore } from '@/lib/store/camperStore';
-
-const PAGE_LIMIT = 4;
+import { PAGE_LIMIT } from '@/lib/constants';
 
 export const useCampersApi = () => {
   const filter = useCampersStore((s) => s.filter);
