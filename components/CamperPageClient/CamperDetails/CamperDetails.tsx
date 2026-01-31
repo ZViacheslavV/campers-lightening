@@ -9,14 +9,14 @@ const CamperDetails = ({ camper }: { camper: Camper }) => {
   const [activeTab, setActiveTab] = useState<DetailsTab>('features');
 
   return (
-    <section id="reviews" className={styles.layout}>
+    <>
       <Tabs activeTab={activeTab} onChange={setActiveTab} />
 
       <div className={styles.panel}>
         {activeTab === 'features' && <FeaturesPanel camper={camper} />}
         {activeTab === 'reviews' && <ReviewsPanel reviews={camper.reviews} />}
       </div>
-    </section>
+    </>
   );
 };
 
