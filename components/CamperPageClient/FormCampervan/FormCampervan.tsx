@@ -36,16 +36,16 @@ const RegistrationFormSchema = Yup.object().shape({
     .max(24, 'Too long name')
     .required('Required'),
   email: Yup.string()
-    .max(32, 'Пошта занадто довга')
-    .email('Недійсний формат електронної пошти')
+    .max(32, 'Email is too long')
+    .email('Invalid email format')
     .required('Required'),
   date: Yup.string()
-    .min(8, 'Пароль має містити щонайменше 8 символів')
-    .max(128, 'Пароль занадто довгий')
+    /*   .min(8, 'Пароль має містити щонайменше 8 символів')
+    .max(128, 'Пароль занадто довгий') */
     .required('Required'),
   comment: Yup.string()
-    .min(8, 'Пароль має містити щонайменше 8 символів')
-    .max(128, 'Пароль занадто довгий'),
+    .min(8, 'Comment should be at least 8 symbols')
+    .max(256, 'Comment is too long'),
 });
 
 //===============================================================
@@ -91,8 +91,10 @@ function FormCampervan() {
     >
       {({ errors, touched, isSubmitting }) => (
         <Form className={styles.form} noValidate>
-          <h3>Book your campervan now</h3>
-          <p>Stay connected! We are always ready to help you.</p>
+          <div className={styles.titleFormWrapper}>
+            <h3>Book your campervan now</h3>
+            <p>Stay connected! We are always ready to help you.</p>
+          </div>
           {/* Username */}
           <div className={styles.fieldGroup}>
             <label className="visually-hidden" htmlFor={`${fieldId}-name`}>
