@@ -7,6 +7,8 @@ import { useQuery } from '@tanstack/react-query';
 import { getCamperById } from '@/lib/api/clientApi';
 import Loader from '@/app/loading';
 import CamperGalleryInfo from './CamperGalleryInfo/CamperGalleryInfo';
+import CamperDetails from './CamperDetails/CamperDetails';
+import FormCampervan from './FormCampervan/FormCampervan';
 
 //================================================================
 
@@ -25,16 +27,15 @@ const CamperPageClient = () => {
 
   if (isLoading) return <Loader />;
 
-  if (error || !camper) return <p>Something went wrong.</p>;
+  if (error || !camper) return <p className={styles.wrong}>Something went wrong.</p>;
 
   return (
     <section className={styles.camperSection}>
       <Container>
         <CamperGalleryInfo camper={camper} />
         <div className={styles.detailsBottomHalfWrapper}>
-          <div id="reviews">{/* <Reviews /> */}</div>
-
-          <div className="form">{/* <FormCampervan /> */}</div>
+          {<CamperDetails camper={camper} />}
+          {<FormCampervan />}
         </div>
       </Container>
     </section>

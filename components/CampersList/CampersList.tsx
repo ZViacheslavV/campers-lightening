@@ -14,8 +14,8 @@ export default function CampersList() {
 
   const { loadMore } = useCampersApi();
 
+  //Smooth scroll for load more button:
   const CARD_HEIGHT = 368;
-  const GAP = 24;
   const prevCountRef = useRef(campers.length);
   useEffect(() => {
     const newCount = campers.length;

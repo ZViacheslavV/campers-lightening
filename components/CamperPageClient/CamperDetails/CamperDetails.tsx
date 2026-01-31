@@ -9,7 +9,7 @@ const CamperDetails = ({ camper }: { camper: Camper }) => {
   const [activeTab, setActiveTab] = useState<DetailsTab>('features');
 
   return (
-    <section className={styles.layout}>
+    <section id="reviews" className={styles.layout}>
       <Tabs activeTab={activeTab} onChange={setActiveTab} />
 
       <div className={styles.panel}>

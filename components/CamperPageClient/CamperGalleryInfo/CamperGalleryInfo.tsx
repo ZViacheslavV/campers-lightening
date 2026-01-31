@@ -4,7 +4,7 @@ import styles from './CamperGalleryInfo.module.scss';
 import Image from 'next/image';
 
 const CamperGalleryInfo = ({ camper }: { camper: Camper }) => (
-  <div className={styles.detailsTopHalfWrapper}>
+  <div className={styles.galleryInfoWrapper}>
     <CamperHeaderMeta camper={camper} showFavorite={false} priceBelow />
 
     <ul className={styles.galleryWrapper}>
