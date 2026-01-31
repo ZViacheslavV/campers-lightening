@@ -1,43 +1,6 @@
 @use '@/styles/variables' as *;
 @use '@/styles/mixins' as *;
 
-/* .layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 1fr;
-  grid-template-areas:
-    'tabs tabs'
-    'content form';
-  gap: 40px;
-} */
-
-/* .tabs {
-  grid-area: tabs;
-  display: flex;
-  gap: 12px;
-
-  button {
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 1.2;
-    color: var(--main);
-    background-color: transparent;
-
-    &::after {
-      content: '';
-      display: block;
-      height: 1px;
-      background-color: transparent;
-      margin: 24px 0;
-    }
-
-    &.active::after {
-      height: 5px;
-      background-color: var(--button);
-    }
-  }
-} */
-
 .tabs {
   position: relative;
   display: flex;
@@ -46,7 +9,7 @@
   &::after {
     content: '';
     position: absolute;
-    bottom: 2;
+    bottom: 0;
     z-index: -1;
     width: calc(200% + 40px);
     height: 1px;
@@ -68,7 +31,7 @@
 
   .indicator {
     position: absolute;
-    bottom: 0;
+    bottom: -2;
     left: 0;
     height: 5px;
     width: 0;
