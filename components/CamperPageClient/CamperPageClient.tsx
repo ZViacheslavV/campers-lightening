@@ -8,7 +8,6 @@ import { getCamperById } from '@/lib/api/clientApi';
 import Loader from '@/app/loading';
 import CamperHeaderMeta from '../CamperHeaderMeta/CamperHeaderMeta';
 import Image from 'next/image';
-import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 const CamperPageClient = () => {
   const { id } = useParams<{ id: string }>();
