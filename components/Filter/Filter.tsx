@@ -67,6 +67,14 @@ const Filters = () => {
       equipment: draftFilters.equipment?.length ? draftFilters.equipment : undefined,
       transmission: draftFilters.transmission,
     });
+
+    // Scrolling to top:
+    const topElement = document.querySelector('#campersListTop');
+    if (topElement) {
+      topElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }, [draftFilters, setFilter]);
 
   return (

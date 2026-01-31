@@ -14,25 +14,43 @@ export default function CampersList() {
 
   const { loadMore } = useCampersApi();
 
-  //Smooth scroll for load more button:
-  const CARD_HEIGHT = 368;
-  const prevCountRef = useRef(campers.length);
-  useEffect(() => {
-    const newCount = campers.length;
-    const prevCount = prevCountRef.current;
+  const listTopRef = useRef<HTMLDivElement>(null);
+  const prevCampersLength = useRef(campers.length);
+  const scrollDirectionRef = useRef<'top' | 'down' | null>(null);
 
-    if (newCount > prevCount) {
-      const scrollDistance = CARD_HEIGHT * 2 - 70;
-      window.scrollBy({ top: scrollDistance, behavior: 'smooth' });
+  const CARD_HEIGHT = 368;
+
+  // Looking on next scroll
+  const handleLoadMore = () => {
+    scrollDirectionRef.current = 'down';
+    loadMore();
+  };
+
+  // Listening and campers and smooth scrolling:
+  useEffect(() => {
+    const prevCount = prevCampersLength.current;
+    const newCount = campers.length;
+
+    if (newCount === prevCount) return; // нічого не змінилося
+
+    if (scrollDirectionRef.current === 'down') {
+      // scroll on Load more
+      window.scrollBy({ top: CARD_HEIGHT * 2 - 80, behavior: 'smooth' });
+    } else {
+      // Scroll on Search
+      requestAnimationFrame(() => {
+        listTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
     }
 
-    prevCountRef.current = newCount;
+    prevCampersLength.current = newCount;
+    scrollDirectionRef.current = null;
   }, [campers]);
 
-  /* if (loading && campers.length === 0) return <Loader />; */ // TODO check or delete comments
+  if (loading && campers.length === 0) return <Loader />;
 
   return (
-    <div className={styles.campersListWrapper}>
+    <div ref={listTopRef} className={styles.campersListWrapper}>
       <ul className={styles.campersList}>
         {campers.map((camper) => (
           <CamperCard key={camper.id} camper={camper} />
@@ -42,7 +60,7 @@ export default function CampersList() {
       {loading && campers.length > 0 && <Loader />}
 
       {hasMore && (
-        <button className={styles.loadMoreBtn} onClick={loadMore} disabled={loading}>
+        <button className={styles.loadMoreBtn} onClick={handleLoadMore} disabled={loading}>
           {loading ? 'Loading...' : 'Load More'}
         </button>
       )}

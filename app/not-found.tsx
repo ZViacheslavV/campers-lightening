@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import css from './page.module.scss';
 import { Metadata } from 'next';
 import { SITE_URL } from '@/lib/constants';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Campers Lightening | 404 - Page not found',
@@ -35,6 +36,9 @@ const NotFound = () => (
   <div className={clsx(css.content, css.center)}>
     <h1 className={css.title}>404 - Page not found</h1>
     <p className={css.description}>Sorry, the page you are looking for does not exist.</p>
+    <Link className={css.goCatalogPage} href={'/catalog'}>
+      Go to catalog page
+    </Link>
   </div>
 );
 
