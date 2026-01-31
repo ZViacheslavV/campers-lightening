@@ -100,4 +100,26 @@
   display: flex;
   flex-direction: column;
   gap: 44px;
+
+  .rewLitem {
+    .reviewerMeta {
+      @include flex-center(_, flex-start);
+
+      .nameCircle {
+        border-radius: 60px;
+        width: 60px;
+        height: 60px;
+
+        background: var(--badges);
+
+        font-family: var(--font-family);
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 133%;
+        color: var(--button);
+
+        @include flex-center();
+      }
+    }
+  }
 }

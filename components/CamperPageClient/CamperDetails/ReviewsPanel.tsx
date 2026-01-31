@@ -11,7 +11,12 @@ const ReviewsPanel = ({ reviews }: Props) => (
 
     <ul className={styles.reviewsPanel}>
       {reviews.map((r, i) => (
-        <li key={i}>
+        <li key={i} className={styles.rewLitem}>
+          <div className={styles.reviewerMeta}>
+            <div className={styles.nameCircle}>{r.reviewer_name.slice(0, 1)}</div>
+            <p>{r.reviewer_name}</p>
+          </div>
+
           <p>{r.comment}</p>
         </li>
       ))}
