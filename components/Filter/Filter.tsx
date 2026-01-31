@@ -136,7 +136,7 @@ const Filters = () => {
               label={label}
               icon={ICONS[value]}
               checked={draftFilters.form === value}
-              onToggle={() => updateDraft('form', value)}
+              onToggle={() => updateDraft('form', draftFilters.form === value ? undefined : value)}
               isRadio
             />
           </li>

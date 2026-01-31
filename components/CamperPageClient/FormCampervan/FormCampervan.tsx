@@ -1,23 +1,11 @@
 'use client';
 
-import { useState } from 'react';
-
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
 import { useId } from 'react';
 import * as Yup from 'yup';
-import Link from 'next/link';
-import toast from 'react-hot-toast';
 import styles from './FormCampervan.module.scss';
 import RedButton from '@/components/ui/RedButton/RedButton';
-
-/* import { registerUser, RegisterRequest } from '@/lib/api/clientApi';
-import { useAuthUserStore } from '@/lib/store/authStore';
-import type { User } from '@/types/user'; */
-
-// import Toast from '@/components/common/Toast/Toast';
-/* import Button from '@/components/common/Button/Button';*/
-
-//===============================================================
+import { Toast } from '@/components/ui/Toast/Toast';
 
 interface BookRequest {
   name: string;
@@ -39,10 +27,7 @@ const RegistrationFormSchema = Yup.object().shape({
     .max(32, 'Email is too long')
     .email('Invalid email format')
     .required('Required'),
-  date: Yup.string()
-    /*   .min(8, 'Пароль має містити щонайменше 8 символів')
-    .max(128, 'Пароль занадто довгий') */
-    .required('Required'),
+  date: Yup.date().required('Required').nullable(),
   comment: Yup.string()
     .min(8, 'Comment should be at least 8 symbols')
     .max(256, 'Comment is too long'),
@@ -53,52 +38,33 @@ const RegistrationFormSchema = Yup.object().shape({
 function FormCampervan() {
   const fieldId = useId();
 
-  /*  const setUser = useAuthUserStore((s) => s.setUser);
-
-  const handleSubmit = async (values: RegisterRequest, actions: FormikHelpers<RegisterRequest>) => {
+  const handleSubmit = async (values: BookRequest, actions: FormikHelpers<BookRequest>) => {
     try {
-      const res = await registerUser(values);
-      setUser(res.data as User);
-
-      toast.custom(
-        <Toast
-          type="success"
-          message="Вітаємо з успішною реєстрацією !"
-        />,
-        { duration: 5000 }
-      );
-
-      router.push('/profile/edit');
+      Toast.booking('Congratulations with successful booking!');
+      actions.resetForm();
     } catch (err) {
-      console.error('Register error:', err);
-
-      toast.custom(<Toast type="error" message="Не вдалося зареєструватися" />, {
-        duration: 5000,
-      });
+      console.error('Booking error:', err);
+      Toast.error('Booking failed');
     } finally {
       actions.setSubmitting(false);
     }
-  }; */
+  };
 
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={RegistrationFormSchema}
-      onSubmit={/* handleSubmit */ () => {}}
+      onSubmit={handleSubmit}
       validateOnBlur
       validateOnChange
       validateOnMount
     >
       {({ errors, touched, isSubmitting }) => (
         <Form className={styles.form} noValidate>
-          <div className={styles.titleFormWrapper}>
-            <h3>Book your campervan now</h3>
-            <p>Stay connected! We are always ready to help you.</p>
-          </div>
           {/* Username */}
           <div className={styles.fieldGroup}>
             <label className="visually-hidden" htmlFor={`${fieldId}-name`}>
-              Ім’я*
+              Name*
             </label>
 
             <Field
@@ -116,18 +82,18 @@ function FormCampervan() {
               <ErrorMessage name="name">
                 {(msg) => <p className={styles.errorText}>{msg}</p>}
               </ErrorMessage>
-              {!(touched.name && errors.name) && (
+              {/*       {!(touched.name && errors.name) && (
                 <p className={styles.errorTextHidden} aria-hidden="true">
                   hidden text;
                 </p>
-              )}
+              )} */}
             </div>
           </div>
 
           {/* Email */}
           <div className={styles.fieldGroup}>
             <label className="visually-hidden" htmlFor={`${fieldId}-email`}>
-              Пошта*
+              Email*
             </label>
 
             <Field
@@ -146,11 +112,11 @@ function FormCampervan() {
               <ErrorMessage name="email">
                 {(msg) => <p className={styles.errorText}>{msg}</p>}
               </ErrorMessage>
-              {!(touched.email && errors.email) && (
+              {/*   {!(touched.email && errors.email) && (
                 <p className={styles.errorTextHidden} aria-hidden="true">
                   hidden text;
                 </p>
-              )}
+              )} */}
             </div>
           </div>
 
@@ -160,8 +126,10 @@ function FormCampervan() {
               Comment
             </label>
 
-            <div className={styles.passwordWrapper}>
+            <div className={styles.commentWrapper}>
               <Field
+                as="textarea"
+                rows={3}
                 className={`${styles.field} ${
                   touched.comment && errors.comment ? styles.fieldInvalid : ''
                 } ${touched.comment && !errors.comment ? styles.fieldValid : ''}`}
@@ -173,14 +141,14 @@ function FormCampervan() {
 
               <button
                 type="button"
-                className={styles.passwordToggle}
+                className={styles.commentToggle}
                 onClick={() => {}}
-                aria-label={'Коментар'}
+                aria-label={'Comment'}
               ></button>
             </div>
 
             <div className={styles.errorSlot} aria-live="polite">
-              <ErrorMessage name="password">
+              <ErrorMessage name="comment">
                 {(msg) => <p className={styles.errorText}>{msg}</p>}
               </ErrorMessage>
               {/*   {!(touched.password && errors.password) && (
@@ -191,8 +159,8 @@ function FormCampervan() {
             </div>
           </div>
 
-          <RedButton as="button" type="submit" className={styles.sbtBtn}>
-            Send
+          <RedButton as="button" type="submit" className={styles.sbmBtn} disabled={isSubmitting}>
+            {isSubmitting ? 'Sending...' : 'Send'}
           </RedButton>
         </Form>
       )}

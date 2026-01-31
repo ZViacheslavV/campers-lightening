@@ -4,6 +4,7 @@ import '@/styles/globals.scss';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 import Header from '@/components/Header/Header';
 import { SITE_URL } from '@/lib/constants';
+import { Toaster } from 'react-hot-toast';
 
 const interFont = Inter({
   variable: '--font-inter',
@@ -52,6 +53,14 @@ export default function RootLayout({
           <Header />
           <main>{children}</main>
         </TanStackProvider>
+
+        <Toaster
+          position="top-right"
+          gutter={12}
+          toastOptions={{
+            duration: 5000,
+          }}
+        />
       </body>
     </html>
   );

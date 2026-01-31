@@ -9,6 +9,7 @@ type ButtonProps =
       type?: 'button' | 'submit' | 'reset';
       children: React.ReactNode;
       className?: string;
+      disabled?: boolean;
     }
   | {
       as: 'link';
@@ -28,7 +29,12 @@ const RedButton = (props: ButtonProps) => {
     );
 
   return (
-    <button type={props.type ?? 'button'} onClick={props.onClick} className={commonClassName}>
+    <button
+      type={props.type ?? 'button'}
+      onClick={props.onClick}
+      className={commonClassName}
+      disabled={props.disabled}
+    >
       {props.children}
     </button>
   );
