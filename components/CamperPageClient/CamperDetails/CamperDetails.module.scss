@@ -95,6 +95,9 @@
 
   width: 631px;
   min-height: 588px;
+  padding-top: 12px;
 
-  padding: 44px 52px;
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
 }

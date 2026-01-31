@@ -18,6 +18,7 @@ const FeaturesPanel = ({ camper }: Props) => {
     Tank: normalizeLiters(camper.tank),
     Consumption: camper.consumption,
   };
+
   return (
     <div className={styles.featuresPanel}>
       <h3 className="visually-hidden">Features</h3>
