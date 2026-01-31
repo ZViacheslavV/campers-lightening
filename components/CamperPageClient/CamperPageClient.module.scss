@@ -9,7 +9,10 @@
     height: 680px;
     background-color: green;
 
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 40px;
   }
 
   .wrong {
