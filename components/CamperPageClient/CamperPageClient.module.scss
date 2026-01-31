@@ -5,27 +5,10 @@
   padding-top: $container-top-padding-desktop;
   padding-bottom: 80px;
 
-  .galleryWrapper {
-    margin: 28px 0;
-    @include flex-center();
-    gap: 48px;
-    height: 312px;
-    flex-wrap: wrap;
+  .detailsBottomHalfWrapper {
+    height: 680px;
+    background-color: green;
 
-    .thumb {
-      flex-basis: calc((100% - 2 * 48px) / 3);
-      height: 312px;
-
-      .picture {
-        width: 100%;
-        border-radius: 10px;
-      }
-    }
-  }
-
-  .description {
-    line-height: 1.5;
-    color: var(--text);
-    margin-bottom: 60px;
+    display: flex;
   }
 }

@@ -2,6 +2,8 @@ import Link from 'next/link';
 import styles from './page.module.scss';
 import Container from '@/components/ui/Container/Container';
 
+//================================================================
+
 const Home = () => {
   return (
     <section className={styles.hero}>

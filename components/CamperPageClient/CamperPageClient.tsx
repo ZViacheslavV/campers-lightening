@@ -8,6 +8,13 @@ import { getCamperById } from '@/lib/api/clientApi';
 import Loader from '@/app/loading';
 import CamperHeaderMeta from '../CamperHeaderMeta/CamperHeaderMeta';
 import Image from 'next/image';
+import CamperGalleryInfo from './CamperGalleryInfo/CamperGalleryInfo';
+
+//================================================================
+
+type DetailsTab = 'features' | 'reviews';
+
+//================================================================
 
 const CamperPageClient = () => {
   const { id } = useParams<{ id: string }>();
@@ -29,31 +36,11 @@ const CamperPageClient = () => {
   return (
     <section className={styles.camperSection}>
       <Container>
-        <CamperHeaderMeta camper={camper} showFavorite={false} priceBelow />
+        <CamperGalleryInfo camper={camper} />
+        <div className={styles.detailsBottomHalfWrapper}>
+          <div id="reviews">{/* <Reviews /> */}</div>
 
-        <ul className={styles.galleryWrapper}>
-          {camper.gallery.map((pic, index) => (
-            <li key={index} className={styles.thumb}>
-              <Image
-                className={styles.picture}
-                src={pic.thumb}
-                width={292}
-                height={312}
-                alt={camper.name}
-              />
-            </li>
-          ))}
-        </ul>
-
-        <p className={styles.description}>{camper.description}</p>
-
-        <div className={styles.camperContentWrapper}>
-          <div className="detailsTopHalfWrapper">{/* <CamperInfo /> */}</div>
-          <div className="detailsBottomHalfWrapper">
-            <div id="reviews">{/* <Reviews /> */}</div>
-            <div id="features">{/* <Features /> */}</div>
-            <div className="form">{/* <FormCampervan /> */}</div>
-          </div>
+          <div className="form">{/* <FormCampervan /> */}</div>
         </div>
       </Container>
     </section>
