@@ -7,15 +7,15 @@
 
   .detailsBottomHalfWrapper {
     min-height: 680px;
-    background-color: green;
 
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: 48px 1fr;
     grid-template-areas:
       'tabs tabs'
       'content form';
-    gap: 40px;
+    column-gap: 40px;
+    row-gap: 44px;
   }
 
   .wrong {

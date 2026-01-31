@@ -17,14 +17,25 @@
   gap: 12px;
 
   button {
-    padding: 12px 24px;
-    border-radius: 20px;
-    background: transparent;
-    border: 1px solid var(--badges);
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.2;
+    color: var(--main);
+    background-color: transparent;
 
-    &.active {
-      background: var(--button);
-      color: white;
+    &::after {
+      content: '';
+      display: block;
+      height: 1px;
+      background-color: transparent;
+      margin: 24px 0;
+    }
+
+    &.active::after {
+      content: '';
+
+      height: 5px;
+      background-color: var(--button);
     }
   }
 }
