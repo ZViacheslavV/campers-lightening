@@ -16,10 +16,12 @@ export default function CampersList() {
   if (loading && campers.length === 0) return <Loader />;
 
   return (
-    <div className={styles.campersList}>
-      {campers.map((camper) => (
-        <CamperCard key={camper.id} camper={camper} />
-      ))}
+    <div className={styles.campersListWrapper}>
+      <ul className={styles.campersList}>
+        {campers.map((camper) => (
+          <CamperCard key={camper.id} camper={camper} />
+        ))}
+      </ul>
 
       {loading && campers.length > 0 && <Loader />}
 

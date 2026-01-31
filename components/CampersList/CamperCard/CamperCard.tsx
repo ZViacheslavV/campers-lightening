@@ -19,7 +19,7 @@ export default function CamperCard({ camper }: Props) {
   const isFavorite = favorites.includes(camper.id);
 
   return (
-    <div className={styles.camperCard}>
+    <li className={styles.camperCard}>
       <Image
         src={camper.gallery[0]?.thumb}
         alt={camper.name}
@@ -44,6 +44,6 @@ export default function CamperCard({ camper }: Props) {
           Show More
         </RedButton>
       </div>
-    </div>
+    </li>
   );
 }

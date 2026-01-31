@@ -89,47 +89,51 @@ export default function Filters() {
 
       {/* Vehicle equipment */}
       <h4 className={styles.subTitle}>Vehicle equipment</h4>
-      <div className={styles.optionsGrid}>
+      <ul className={styles.optionsGrid}>
         {VEHICLE_EQUIPMENT_ORDER.map((key) => {
           if (key === 'automatic') {
             return (
-              <FilterToggle
-                key={key}
-                label="Automatic"
-                icon={ICONS.automatic}
-                checked={draftFilters.transmission === 'automatic'}
-                onToggle={toggleTransmission}
-              />
+              <li key={key}>
+                <FilterToggle
+                  label="Automatic"
+                  icon={ICONS.automatic}
+                  checked={draftFilters.transmission === 'automatic'}
+                  onToggle={toggleTransmission}
+                />
+              </li>
             );
           } else {
             const equipmentKey = key as Equipment;
             return (
-              <FilterToggle
-                key={equipmentKey}
-                label={equipmentKey}
-                icon={ICONS[equipmentKey]}
-                checked={draftFilters.equipment?.includes(equipmentKey) ?? false}
-                onToggle={() => toggleEquipment(equipmentKey)}
-              />
+              <li key={equipmentKey}>
+                <FilterToggle
+                  label={equipmentKey}
+                  icon={ICONS[equipmentKey]}
+                  checked={draftFilters.equipment?.includes(equipmentKey) ?? false}
+                  onToggle={() => toggleEquipment(equipmentKey)}
+                />
+              </li>
             );
           }
         })}
-      </div>
+      </ul>
 
       {/* Vehicle type */}
       <h4 className={styles.subTitle}>Vehicle type</h4>
-      <div className={styles.optionsGrid}>
+
+      <ul className={styles.optionsGrid}>
         {VEHICLE_TYPES.map(({ label, value }) => (
-          <FilterToggle
-            key={value}
-            label={label}
-            icon={ICONS[value]}
-            checked={draftFilters.form === value}
-            onToggle={() => updateDraft('form', value)}
-            isRadio
-          />
+          <li key={value}>
+            <FilterToggle
+              label={label}
+              icon={ICONS[value]}
+              checked={draftFilters.form === value}
+              onToggle={() => updateDraft('form', value)}
+              isRadio
+            />
+          </li>
         ))}
-      </div>
+      </ul>
 
       <RedButton onClick={applySearch} className={styles.redBtn}>
         Search

@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import styles from './page.module.scss';
 import CampersList from '@/components/CampersList/CampersList';
 import Filter from '@/components/Filter/Filter';
+import ScrollToTop from '@/components/ScrollToTop/ScrollToTop';
 
 export const metadata: Metadata = {
   title: 'Catalog | Campers Lightening',
@@ -19,6 +20,7 @@ const CatalogPage = () => (
         <Filter />
         <CampersList />
       </div>
+      <ScrollToTop />
     </Container>
   </section>
 );

@@ -31,16 +31,16 @@ const CamperEquipmentsList = ({ camper }: Props) => {
   ];
 
   return (
-    <div className={styles.camperEquipments}>
+    <ul className={styles.camperEquipments}>
       {activeKeys.map((key) => (
-        <div key={key} className={styles.equipmentChip}>
+        <li key={key} className={styles.equipmentChip}>
           <svg className={styles.equipmentIcon}>
             <use href={`/icons.svg#${ICONS[key]}`} />
           </svg>
           <span className={styles.equipmentLabel}>{key}</span>
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 
