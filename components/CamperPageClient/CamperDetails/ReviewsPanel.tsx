@@ -12,15 +12,22 @@ const ReviewsPanel = ({ reviews }: Props) => (
 
     <ul className={styles.reviewsPanel}>
       {reviews.map((r, i) => (
-        <li key={i} className={styles.rewLitem}>
+        <li key={i} className={styles.revLitem}>
           <div className={styles.reviewerMeta}>
-            <span className={styles.nameCircle}>{r.reviewer_name.slice(0, 1)}</span>
+            <span className={styles.nameCircle}>{r.reviewer_name[0]}</span>
             <div>
-              <p>{r.reviewer_name}</p>
+              <p className={styles.reviewerName}>{r.reviewer_name}</p>
               <div className={styles.galaxy}>
-                <svg width="16" height="16" className={false ? styles.favorite : ''}>
-                  <use href={`/icons.svg#${ICONS.star}`} />
-                </svg>
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <svg
+                    key={i}
+                    width="16"
+                    height="16"
+                    className={i < r.reviewer_rating ? styles.favorite : ''}
+                  >
+                    <use href={`/icons.svg#${ICONS.star}`} />
+                  </svg>
+                ))}
               </div>
             </div>
           </div>

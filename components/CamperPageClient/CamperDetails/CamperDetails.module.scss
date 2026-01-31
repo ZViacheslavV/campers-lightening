@@ -101,37 +101,47 @@
   flex-direction: column;
   gap: 44px;
 
-  .rewLitem {
+  .revLitem {
     display: flex;
     flex-direction: column;
     gap: 16px;
 
     .reviewerMeta {
       @include flex-center(_, flex-start);
+      gap: 16px;
 
       .nameCircle {
         border-radius: 60px;
         width: 60px;
         height: 60px;
+        background-color: var(--badges);
 
-        background: var(--badges);
-
-        font-family: var(--font-family);
         font-weight: 600;
         font-size: 24px;
-        line-height: 133%;
+        line-height: 1.33;
         color: var(--button);
 
         @include flex-center();
       }
 
-      svg {
-        width: 16px;
-        height: 16px;
-        fill: var(--badges);
+      .reviewerName {
+        font-weight: 500;
+        margin-bottom: 4px;
+        color: var(--main);
+      }
 
-        &.favorite {
-          fill: var(--rating);
+      .galaxy {
+        display: flex;
+        gap: 4px;
+
+        svg {
+          width: 16px;
+          height: 16px;
+          fill: var(--badges);
+
+          &.favorite {
+            fill: var(--rating);
+          }
         }
       }
     }
