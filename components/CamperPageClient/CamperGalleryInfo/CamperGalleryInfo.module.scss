@@ -18,6 +18,13 @@
       .picture {
         width: 100%;
         border-radius: 10px;
+        @include transition(scale);
+        z-index: 1;
+
+        &:hover {
+          scale: 1.005;
+          z-index: 50;
+        }
       }
     }
   }

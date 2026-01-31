@@ -14,6 +14,7 @@ interface CampersStore {
   setCampers: (campers: Camper[], reset: boolean) => void;
   toggleFavorite: (id: string) => void;
   setFilter: (filter: CamperFilter) => void;
+  clearFilter: () => void;
   setPage: (page: number) => void;
   setHasMore: (hasMore: boolean) => void;
   setLoading: (loading: boolean) => void;
@@ -44,6 +45,14 @@ export const useCampersStore = create<CampersStore>()(
       setFilter: (filter) =>
         set(() => ({
           filter,
+          page: 1,
+          campers: [],
+          hasMore: true,
+        })),
+
+      clearFilter: () =>
+        set(() => ({
+          filter: {},
           page: 1,
           campers: [],
           hasMore: true,

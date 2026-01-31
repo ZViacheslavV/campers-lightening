@@ -33,7 +33,7 @@ const CamperPageClient = () => {
     <section className={styles.camperSection}>
       <Container>
         <CamperGalleryInfo camper={camper} />
-        <div id="reviews" className={styles.detailsBottomHalfWrapper}>
+        <div id="reviews" className={styles.secondDetailsWrapper}>
           {<CamperDetails camper={camper} />}
           {<FormCampervan />}
         </div>
