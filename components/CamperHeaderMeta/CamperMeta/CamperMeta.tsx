@@ -18,7 +18,7 @@ const CamperMeta = ({ camper, isFavorite = false }: Props) => {
     <div className={styles.locationRating}>
       <div className={styles.rating}>
         <svg width="16" height="16" className={isFavorite ? styles.favorite : ''}>
-          <use href={`/icons.svg#${ICONS.star}`} />
+          <use href={ICONS.star} />
         </svg>
 
         <Link href={`/catalog/${camper.id}#reviews`}>

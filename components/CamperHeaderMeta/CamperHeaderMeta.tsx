@@ -35,7 +35,7 @@ const CamperHeaderMeta = ({
             {priceElement}
             <button onClick={() => toggleFavorite(camper.id)}>
               <svg width="25" height="24" className={isFavorite ? styles.favorite : ''}>
-                <use href={`/icons.svg#${ICONS.heart}`} />
+                <use href={ICONS.heart} />
               </svg>
             </button>
           </div>
@@ -47,7 +47,7 @@ const CamperHeaderMeta = ({
       <div className={styles.locationRating}>
         <div className={styles.rating}>
           <svg width="16" height="16" className={isFavorite ? styles.favorite : ''}>
-            <use href={`/icons.svg#${ICONS.star}`} />
+            <use href={ICONS.star} />
           </svg>
           <Link href={`/catalog/${camper.id}#reviews`}>
             {camper.rating} ({reviewsCount} {reviewsLabel})

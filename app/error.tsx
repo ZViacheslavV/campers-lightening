@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './error.module.scss';
+import { ICONS } from '@/lib/constants';
 
 type Props = {
   error: Error & { digest?: string };
@@ -20,7 +21,7 @@ const Error = ({ error, reset }: Props) => {
     <div className={styles.error}>
       <div className={styles.card}>
         <svg className={styles.icon}>
-          <use href="/icons.svg#icon-warning" />
+          <use href={ICONS.warning} />
         </svg>
 
         <h1 className={styles.title}>Something went wrong</h1>

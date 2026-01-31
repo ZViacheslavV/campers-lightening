@@ -20,7 +20,7 @@ export default function FilterToggle({ label, icon, checked, onToggle }: FilterT
     >
       {icon && (
         <svg className={styles.optionIcon}>
-          <use href={`/icons.svg#${icon}`} />
+          <use href={icon} />
         </svg>
       )}
       <span>{label}</span>

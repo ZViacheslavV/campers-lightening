@@ -35,7 +35,7 @@ const CamperEquipmentsList = ({ camper }: Props) => {
       {activeKeys.map((key) => (
         <li key={key} className={styles.equipmentChip}>
           <svg className={styles.equipmentIcon}>
-            <use href={`/icons.svg#${ICONS[key]}`} />
+            <use href={ICONS[key]} />
           </svg>
           <span className={styles.equipmentLabel}>{key}</span>
         </li>

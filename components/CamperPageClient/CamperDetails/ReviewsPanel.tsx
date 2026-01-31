@@ -25,7 +25,7 @@ const ReviewsPanel = ({ reviews }: Props) => (
                     height="16"
                     className={i < r.reviewer_rating ? styles.favorite : ''}
                   >
-                    <use href={`/icons.svg#${ICONS.star}`} />
+                    <use href={ICONS.star} />
                   </svg>
                 ))}
               </div>
