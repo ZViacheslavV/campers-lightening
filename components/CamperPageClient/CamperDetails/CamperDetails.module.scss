@@ -102,6 +102,10 @@
   gap: 44px;
 
   .rewLitem {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
     .reviewerMeta {
       @include flex-center(_, flex-start);
 
@@ -120,6 +124,22 @@
 
         @include flex-center();
       }
+
+      svg {
+        width: 16px;
+        height: 16px;
+        fill: var(--badges);
+
+        &.favorite {
+          fill: var(--rating);
+        }
+      }
+    }
+
+    .comment {
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--text);
     }
   }
 }
