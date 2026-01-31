@@ -1,0 +1,34 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: auto 1fr;
+  gap: 24px;
+}
+
+.tabs {
+  grid-column: 1 / 2;
+  display: flex;
+  gap: 12px;
+
+  button {
+    padding: 12px 24px;
+    border-radius: 20px;
+    background: transparent;
+    border: 1px solid var(--badges);
+    cursor: pointer;
+
+    &.active {
+      background: var(--button);
+      color: white;
+    }
+  }
+}
+
+.panel {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  min-height: 25vh;
+}

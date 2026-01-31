@@ -6,13 +6,7 @@ import styles from './CamperPageClient.module.scss';
 import { useQuery } from '@tanstack/react-query';
 import { getCamperById } from '@/lib/api/clientApi';
 import Loader from '@/app/loading';
-import CamperHeaderMeta from '../CamperHeaderMeta/CamperHeaderMeta';
-import Image from 'next/image';
 import CamperGalleryInfo from './CamperGalleryInfo/CamperGalleryInfo';
-
-//================================================================
-
-type DetailsTab = 'features' | 'reviews';
 
 //================================================================
 
