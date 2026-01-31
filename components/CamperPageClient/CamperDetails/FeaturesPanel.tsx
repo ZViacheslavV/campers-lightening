@@ -2,7 +2,11 @@ import CamperEquipmentsList from '@/components/CamperEquipmentList/CamperEquipme
 import { Camper } from '@/types/camper';
 import styles from './CamperDetails.module.scss';
 
-const FeaturesPanel = ({ camper }: { camper: Camper }) => (
+type Props = {
+  camper: Camper;
+};
+
+const FeaturesPanel = ({ camper }: Props) => (
   <div className={styles.featuresPanel}>
     <h3 className="visually-hidden">Features</h3>
 

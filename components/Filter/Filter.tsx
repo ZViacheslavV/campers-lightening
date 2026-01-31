@@ -27,7 +27,7 @@ const VEHICLE_EQUIPMENT_ORDER: (Equipment | 'automatic')[] = [
   'bathroom',
 ] as const;
 
-export default function Filters() {
+const Filters = () => {
   const { filter, setFilter } = useCampersStore();
 
   const [draftFilters, setDraftFilters] = useState<CamperFilter>({
@@ -140,4 +140,6 @@ export default function Filters() {
       </RedButton>
     </div>
   );
-}
+};
+
+export default Filters;

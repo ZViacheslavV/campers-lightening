@@ -1,7 +1,11 @@
 import { CamperReview } from '@/types/camper';
 import styles from './CamperDetails.module.scss';
 
-const ReviewsPanel = ({ reviews }: { reviews: CamperReview[] }) => (
+interface Props {
+  reviews: CamperReview[];
+}
+
+const ReviewsPanel = ({ reviews }: Props) => (
   <ul className={styles.reviewsPanel}>
     {reviews.map((r, i) => (
       <li key={i}>

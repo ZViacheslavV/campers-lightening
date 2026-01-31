@@ -44,16 +44,24 @@
 
 .featuresPanel {
   grid-area: content;
-  height: 100%;
 
-  background-color: blue;
   padding: 44px 52px;
+  border-radius: 10px;
+  width: 631px;
+  min-height: 588px;
+  background: var(--inputs);
+
+  .vehicleDetails {
+    margin-top: 100px;
+  }
 }
 
 .reviewsPanel {
   grid-area: content;
   height: 100%;
 
-  background-color: blue;
+  width: 631px;
+  min-height: 588px;
+
   padding: 44px 52px;
 }

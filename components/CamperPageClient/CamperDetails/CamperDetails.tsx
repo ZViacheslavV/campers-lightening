@@ -4,7 +4,11 @@ import { Camper } from '@/types/camper';
 import FeaturesPanel from './FeaturesPanel';
 import ReviewsPanel from './ReviewsPanel';
 
-const CamperDetails = ({ camper }: { camper: Camper }) => {
+interface Props {
+  camper: Camper;
+}
+
+const CamperDetails = ({ camper }: Props) => {
   const [activeTab, setActiveTab] = useState<DetailsTab>('features');
 
   return (
