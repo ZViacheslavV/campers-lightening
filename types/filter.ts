@@ -14,15 +14,3 @@ export interface CamperFetch {
   limit?: number;
   filter?: CamperFilter;
 }
-
-export interface CamperFilterParams {
-  page?: number;
-  form?: string;
-  limit?: number;
-  location?: string;
-  AC?: boolean;
-  kitchen?: boolean;
-  TV?: boolean;
-  bathroom?: boolean;
-  transmission?: string;
-}

@@ -29,6 +29,7 @@ const VEHICLE_EQUIPMENT_ORDER: (Equipment | 'automatic')[] = [
 
 const Filters = () => {
   const { filter, setFilter } = useCampersStore();
+  const { loading } = useCampersStore();
 
   const [draftFilters, setDraftFilters] = useState<CamperFilter>({
     location: filter.location ?? '',
@@ -143,8 +144,8 @@ const Filters = () => {
         ))}
       </ul>
 
-      <RedButton onClick={applySearch} className={styles.redBtn}>
-        Search
+      <RedButton onClick={applySearch} className={styles.redBtn} disabled={loading}>
+        {loading ? 'Searching...' : 'Search'}
       </RedButton>
     </div>
   );

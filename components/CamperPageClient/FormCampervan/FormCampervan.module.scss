@@ -1,15 +1,57 @@
-.form {
-  width: 100%;
-  gap: 14px;
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
 
+.formikWrapper {
+  width: 100%;
   padding: 44px 57px;
 
   border: 1px solid var(--gray-light);
   border-radius: 10px;
-
   height: 588px;
 
   grid-area: form;
+
+  .formTitle {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.2;
+    color: var(--main);
+    margin-bottom: 8px;
+  }
+
+  .subTitle {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--gray);
+    margin-bottom: 24px;
+  }
+
+  .form {
+    @include flex-center(column);
+    gap: 14px;
+
+    .fieldGroup {
+      .field {
+        border-radius: 12px;
+        padding: 18px 337px 18px 18px;
+        width: 527px;
+        height: 60px;
+
+        background-color: var(--inputs);
+      }
+
+      .textArea {
+        border-radius: 10px;
+        padding: 18px 308px 76px 18px;
+        width: 527px;
+        height: 118px;
+      }
+    }
+
+    .sbmBtn {
+      margin-top: 10px;
+    }
+  }
 }
 
 // .title {
@@ -56,13 +98,13 @@
 //   color: var(--opacity-neutral-darkest-60);
 // }
 
-// .field:hover,
-// .field:focus-visible {
-//   border: 2px solid var(--color-scheme-accent);
-// }
+.field:hover,
+.field:focus-visible {
+  border: 2px solid var(--color-scheme-accent);
+}
 
 // /* Fields with errors */
-// .errorSlot {
+// .errors {
 //   min-height: 20px;
 //   margin-top: 5px;
 // }

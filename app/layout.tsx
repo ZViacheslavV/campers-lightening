@@ -55,7 +55,7 @@ export default function RootLayout({
         </TanStackProvider>
 
         <Toaster
-          position="top-right"
+          position="top-center"
           gutter={12}
           toastOptions={{
             duration: 5000,

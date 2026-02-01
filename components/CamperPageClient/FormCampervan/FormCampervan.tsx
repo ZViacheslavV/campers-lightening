@@ -51,86 +51,89 @@ function FormCampervan() {
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={RegistrationFormSchema}
-      onSubmit={handleSubmit}
-      validateOnBlur
-      validateOnChange
-      validateOnMount
-    >
-      {({ errors, touched, isSubmitting }) => (
-        <Form className={styles.form} noValidate>
-          {/* Username */}
-          <div className={styles.fieldGroup}>
-            <label className="visually-hidden" htmlFor={`${fieldId}-name`}>
-              Name*
-            </label>
+    <div className={styles.formikWrapper}>
+      <div className={styles.formTitleWrapper}>
+        <h3 className={styles.formTitle}>Book your campervan now</h3>
+        <p className={styles.subTitle}>Stay connected! We are always ready to help you.</p>
+      </div>
+      <Formik
+        onSubmit={handleSubmit}
+        initialValues={initialValues}
+        validationSchema={RegistrationFormSchema}
+        validateOnBlur
+        validateOnChange
+        validateOnMount
+      >
+        {({ errors, touched, isSubmitting }) => (
+          <Form className={styles.form} noValidate>
+            {/* Username */}
+            <div className={styles.fieldGroup}>
+              <label className="visually-hidden" htmlFor={`${fieldId}-name`}>
+                Name*
+              </label>
 
-            <Field
-              className={`${styles.field} ${
-                touched.name && errors.name ? styles.fieldInvalid : ''
-              } ${touched.name && !errors.name ? styles.fieldValid : ''}`}
-              type="text"
-              name="name"
-              id={`${fieldId}-name`}
-              placeholder="Name*"
-              autoComplete="name"
-            />
+              <Field
+                className={`${styles.field} ${
+                  touched.name && errors.name ? styles.fieldInvalid : ''
+                } ${touched.name && !errors.name ? styles.fieldValid : ''}`}
+                type="text"
+                name="name"
+                id={`${fieldId}-name`}
+                placeholder="Name*"
+                autoComplete="name"
+              />
 
-            <div className={styles.errorSlot} aria-live="polite">
-              <ErrorMessage name="name">
-                {(msg) => <p className={styles.errorText}>{msg}</p>}
-              </ErrorMessage>
-              {/*       {!(touched.name && errors.name) && (
+              <div className={styles.errors} aria-live="polite">
+                <ErrorMessage name="name">
+                  {(msg) => <p className={styles.errorText}>{msg}</p>}
+                </ErrorMessage>
+                {/*       {!(touched.name && errors.name) && (
                 <p className={styles.errorTextHidden} aria-hidden="true">
                   hidden text;
                 </p>
               )} */}
+              </div>
             </div>
-          </div>
 
-          {/* Email */}
-          <div className={styles.fieldGroup}>
-            <label className="visually-hidden" htmlFor={`${fieldId}-email`}>
-              Email*
-            </label>
+            {/* Email */}
+            <div className={styles.fieldGroup}>
+              <label className="visually-hidden" htmlFor={`${fieldId}-email`}>
+                Email*
+              </label>
 
-            <Field
-              className={`${styles.field} ${
-                touched.email && errors.email ? styles.fieldInvalid : ''
-              } ${touched.email && !errors.email ? styles.fieldValid : ''}`}
-              type="email"
-              name="email"
-              id={`${fieldId}-email`}
-              placeholder="Email*"
-              autoComplete="email"
-              inputMode="email"
-            />
+              <Field
+                className={`${styles.field} ${
+                  touched.email && errors.email ? styles.fieldInvalid : ''
+                } ${touched.email && !errors.email ? styles.fieldValid : ''}`}
+                type="email"
+                name="email"
+                id={`${fieldId}-email`}
+                placeholder="Email*"
+                autoComplete="email"
+                inputMode="email"
+              />
 
-            <div className={styles.errorSlot} aria-live="polite">
-              <ErrorMessage name="email">
-                {(msg) => <p className={styles.errorText}>{msg}</p>}
-              </ErrorMessage>
-              {/*   {!(touched.email && errors.email) && (
+              <div className={styles.errors} aria-live="polite">
+                <ErrorMessage name="email">
+                  {(msg) => <p className={styles.errorText}>{msg}</p>}
+                </ErrorMessage>
+                {/*   {!(touched.email && errors.email) && (
                 <p className={styles.errorTextHidden} aria-hidden="true">
                   hidden text;
                 </p>
               )} */}
+              </div>
             </div>
-          </div>
 
-          {/* Comment */}
-          <div className={styles.fieldGroup}>
-            <label className="visually-hidden" htmlFor={`${fieldId}-password`}>
-              Comment
-            </label>
+            {/* Comment */}
+            <div className={styles.fieldGroup}>
+              <label className="visually-hidden" htmlFor={`${fieldId}-comment`}>
+                Comment
+              </label>
 
-            <div className={styles.commentWrapper}>
               <Field
                 as="textarea"
-                rows={3}
-                className={`${styles.field} ${
+                className={`${styles.field} ${styles.textArea} ${
                   touched.comment && errors.comment ? styles.fieldInvalid : ''
                 } ${touched.comment && !errors.comment ? styles.fieldValid : ''}`}
                 type={'text'}
@@ -139,32 +142,25 @@ function FormCampervan() {
                 placeholder="Comment"
               />
 
-              <button
-                type="button"
-                className={styles.commentToggle}
-                onClick={() => {}}
-                aria-label={'Comment'}
-              ></button>
-            </div>
-
-            <div className={styles.errorSlot} aria-live="polite">
-              <ErrorMessage name="comment">
-                {(msg) => <p className={styles.errorText}>{msg}</p>}
-              </ErrorMessage>
-              {/*   {!(touched.password && errors.password) && (
+              <div className={styles.errors} aria-live="polite">
+                <ErrorMessage name="comment">
+                  {(msg) => <p className={styles.errorText}>{msg}</p>}
+                </ErrorMessage>
+                {/* {!(touched.password && errors.password) && (
                 <p className={styles.errorTextHidden} aria-hidden="true">
                   hidden text;
                 </p>
               )} */}
+              </div>
             </div>
-          </div>
 
-          <RedButton as="button" type="submit" className={styles.sbmBtn} disabled={isSubmitting}>
-            {isSubmitting ? 'Sending...' : 'Send'}
-          </RedButton>
-        </Form>
-      )}
-    </Formik>
+            <RedButton as="button" type="submit" className={styles.sbmBtn} disabled={isSubmitting}>
+              {isSubmitting ? 'Sending...' : 'Send'}
+            </RedButton>
+          </Form>
+        )}
+      </Formik>
+    </div>
   );
 }
 
