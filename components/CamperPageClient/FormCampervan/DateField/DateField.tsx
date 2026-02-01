@@ -4,6 +4,7 @@ import { DayPicker } from 'react-day-picker';
 
 import 'react-day-picker/dist/style.css';
 import styles from './DateField.module.scss';
+import clsx from 'clsx';
 
 interface DateFieldProps {
   value: Date | null;
@@ -53,7 +54,7 @@ const DateField = ({ value, onChange, hasError, touched }: DateFieldProps) => {
       <input
         type="text"
         readOnly
-        className={styles.input}
+        className={clsx(styles.input, value ? styles.activeInput : '')}
         placeholder={placeholder}
         value={value ? format(value, DATE_FORMAT) : ''}
         onClick={() => setCalendarOpen((prev) => !prev)}

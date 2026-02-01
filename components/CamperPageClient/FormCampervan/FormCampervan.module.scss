@@ -31,6 +31,8 @@
     gap: 14px;
 
     .fieldGroup {
+      position: relative;
+
       .field {
         border-radius: 12px;
         padding: 18px 337px 18px 18px;
@@ -45,6 +47,20 @@
         padding: 18px 308px 76px 18px;
         width: 527px;
         height: 118px;
+      }
+
+      .errors {
+        position: absolute;
+        top: 57px;
+        left: 20px;
+      }
+
+      .errorText {
+        font-family: var(--font-family);
+        font-size: 10px;
+        line-height: 1.6;
+
+        color: var(--gray);
       }
     }
 
@@ -98,25 +114,7 @@
 //   color: var(--opacity-neutral-darkest-60);
 // }
 
-.field:hover,
-.field:focus-visible {
-  border: 2px solid var(--color-scheme-accent);
-}
-
 // /* Fields with errors */
-// .errors {
-//   min-height: 20px;
-//   margin-top: 5px;
-// }
-
-// .errorText {
-//   font-family: var(--font-family);
-//   font-size: 12px;
-//   line-height: 1.6;
-
-//   color: var(--color-red);
-//   margin: 0;
-// }
 
 // .errorTextHidden {
 //   margin: 0;
