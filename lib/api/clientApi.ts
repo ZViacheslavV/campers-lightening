@@ -1,9 +1,18 @@
-import { Camper, CampersApiResponse } from '@/types/camper';
+import { Camper, CamperForm, CampersApiResponse } from '@/types/camper';
 import { nextServer } from './api';
-import { cleanParams } from '@/helpers/cleanParams';
-import { CamperFetch } from '@/types/filter';
+import { CamperFetchParams, Equipment, Transmission } from '@/types/filter';
 import { API_ENDPOINTS, PAGE_LIMIT } from '../constants';
 import { AxiosError } from 'axios';
+
+//================================================================
+
+type CampersQueryParams = {
+  page: number;
+  limit: number;
+  location?: string;
+  form?: CamperForm;
+  transmission?: Transmission;
+} & Partial<Record<Equipment, true>>;
 
 //================================================================
 
@@ -11,12 +20,68 @@ export const getCampersCatalog = async ({
   page = 1,
   limit = PAGE_LIMIT,
   filter,
-}: CamperFetch = {}) => {
+}: CamperFetchParams): Promise<CampersApiResponse> => {
+  const params: CampersQueryParams = {
+    page,
+    limit,
+  };
+
+  if (filter?.location) params.location = filter.location;
+
+  if (filter?.form) params.form = filter.form;
+
+  if (filter?.transmission) params.transmission = filter.transmission;
+
+  if (filter?.equipment?.length) {
+    for (const key of filter.equipment) {
+      params[key] = true;
+    }
+  }
+
+  try {
+    const { data } = await nextServer.get<CampersApiResponse>(API_ENDPOINTS.CAMPERS, { params });
+
+    return data;
+  } catch (error) {
+    const axiosError = error as AxiosError<CampersApiResponse>;
+
+    if (axiosError.response?.status === 404) {
+      return { total: 0, items: [] };
+    }
+
+    throw error;
+  }
+};
+
+export const getCamperById = async (id: string) => {
+  console.log('🔵 CLIENT fetch camper by id'); // TODO del console.log
+
+  const url = API_ENDPOINTS.CAMPER_BY_ID(id);
+  console.log('FETCH URL:', url);
+
+  const { data } = await nextServer.get<Camper>(API_ENDPOINTS.CAMPER_BY_ID(id));
+  return data;
+};
+
+/* export const getCampersCatalog = async (
+  { page = 1, limit = PAGE_LIMIT, filter } /* : CamperFetch = {} 
+) => {
   const params = cleanParams({
     page,
     limit,
-    ...filter,
+    filter,
   });
+
+  if (filter?.location) params.location = filter.location;
+  if (filter?.form) params.form = filter.form;
+  if (filter?.transmission) params.transmission = filter.transmission;
+
+  if (filter?.equipment?.length) {
+    filter.equipment.forEach((key) => {
+      // key: "AC" | "kitchen" | "TV" | "bathroom"
+      params[key] = true;
+    });
+  }
 
   console.log('🔵 CLIENT fetch campers catalog '); // TODO del console.log
 
@@ -32,14 +97,4 @@ export const getCampersCatalog = async ({
     }
     throw err;
   }
-};
-
-export const getCamperById = async (id: string) => {
-  console.log('🔵 CLIENT fetch camper by id'); // TODO del console.log
-
-  const url = API_ENDPOINTS.CAMPER_BY_ID(id);
-  console.log('FETCH URL:', url);
-
-  const { data } = await nextServer.get<Camper>(API_ENDPOINTS.CAMPER_BY_ID(id));
-  return data;
-};
+}; */
