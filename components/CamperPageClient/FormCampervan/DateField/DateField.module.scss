@@ -19,13 +19,15 @@
   width: 527px;
   height: 60px;
 
+  cursor: pointer;
+
   &:focus {
     outline: none;
   }
 }
 
 .activeInput {
-  color: var(--text);
+  color: var(--main);
 }
 
 .popover {

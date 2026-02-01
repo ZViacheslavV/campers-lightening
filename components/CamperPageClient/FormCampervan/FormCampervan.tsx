@@ -22,14 +22,14 @@ const initialValues: BookRequest = { name: '', email: '', date: null as Date | n
 
 const RegistrationFormSchema = Yup.object().shape({
   name: Yup.string()
-    .min(3, 'name should be at least 3 symbols')
-    .max(24, 'too long name')
-    .required('required'),
+    .min(3, 'Name should be at least 3 symbols')
+    .max(24, 'Too long name')
+    .required('Required'),
   email: Yup.string()
-    .max(32, 'email is too long')
-    .email('invalid email format')
-    .required('required'),
-  date: Yup.date().required('required'),
+    .max(32, 'Email is too long')
+    .email('Invalid email format')
+    .required('Required'),
+  date: Yup.date().required('Required'),
 });
 
 //===============================================================
