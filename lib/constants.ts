@@ -24,6 +24,7 @@ const iconsMap = [
   ['heart', 'icon-heart'],
   ['star', 'icon-star'],
   ['warning', 'icon-warning'],
+  ['petrol', 'icon-fuel-pump'],
 ] as const;
 
 export const ICONS = Object.fromEntries(
@@ -46,4 +47,5 @@ type IconKey =
   | 'water'
   | 'heart'
   | 'star'
-  | 'warning';
+  | 'warning'
+  | 'petrol';
