@@ -12,7 +12,7 @@ const Tabs = ({ activeTab, onChange }: TabsProps) => {
   const tabsRef = useRef<HTMLDivElement>(null);
   const indicatorRef = useRef<HTMLSpanElement>(null);
 
-  //SLider:
+  //Slider:
   useEffect(() => {
     const container = tabsRef.current;
     const indicator = indicatorRef.current;

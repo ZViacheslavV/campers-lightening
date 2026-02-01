@@ -48,7 +48,7 @@ const DateField = ({ name, value, onChange, hasError, touched }: DateFieldProps)
     setCalendarOpen(false);
   };
 
-  const placeholder = hasError && touched ? 'Select a date between today' : 'Booking date*';
+  const placeholder = hasError && touched ? `Select a ${name} between today` : 'Booking date*';
 
   return (
     <div ref={containerRef} className={styles.dateField}>

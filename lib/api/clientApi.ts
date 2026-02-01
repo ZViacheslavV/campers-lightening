@@ -31,8 +31,6 @@ export const getCampersCatalog = async ({
   if (filter?.transmission) params.transmission = filter.transmission;
   if (filter?.equipment?.length) for (const key of filter.equipment) params[key] = true;
 
-  console.log('🔵 CLIENT fetch campers catalog '); // TODO del console.log
-
   try {
     const { data } = await nextServer.get<CampersApiResponse>(API_ENDPOINTS.CAMPERS, { params });
 
@@ -49,7 +47,6 @@ export const getCampersCatalog = async ({
 };
 
 export const getCamperById = async (id: string) => {
-  console.log('🔵 CLIENT fetch camper by id'); // TODO del console.log
   const { data } = await nextServer.get<Camper>(API_ENDPOINTS.CAMPER_BY_ID(id));
   return data;
 };

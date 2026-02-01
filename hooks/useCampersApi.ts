@@ -26,8 +26,6 @@ export const useCampersApi = () => {
 
       const page = reset ? 1 : useCampersStore.getState().page + 1;
 
-      console.log('FETCH PAGE', page); //TODO del console.log
-
       try {
         const res = await getCampersCatalog({
           page,
