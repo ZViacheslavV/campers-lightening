@@ -116,7 +116,7 @@ http://localhost:3000
 
 Проєкт задеплоєний та доступний за посиланням:
 
-🔗 **Live demo:** _додати посилання на Vercel / Netlify_
+🔗 **Live demo:** https://campers-lightening.vercel.app/
 
 ---
 
