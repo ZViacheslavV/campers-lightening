@@ -22,6 +22,8 @@ const CamperPageClient = () => {
   } = useQuery({
     queryKey: ['truck', id],
     queryFn: () => getCamperById(id),
+    staleTime: 5 * 60 * 1000,
+    enabled: typeof id === 'string',
     refetchOnMount: false,
   });
 

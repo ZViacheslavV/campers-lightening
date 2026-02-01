@@ -50,10 +50,6 @@ export const getCampersCatalog = async ({
 
 export const getCamperById = async (id: string) => {
   console.log('🔵 CLIENT fetch camper by id'); // TODO del console.log
-
-  const url = API_ENDPOINTS.CAMPER_BY_ID(id);
-  console.log('FETCH URL:', url);
-
   const { data } = await nextServer.get<Camper>(API_ENDPOINTS.CAMPER_BY_ID(id));
   return data;
 };

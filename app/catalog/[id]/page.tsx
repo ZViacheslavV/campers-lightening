@@ -38,6 +38,7 @@ const CamperPage = async ({ params }: Props) => {
   queryClient.prefetchQuery({
     queryKey: ['truck', id],
     queryFn: () => getCamperByIdServer(id),
+    staleTime: 5 * 60 * 1000,
   });
 
   return (
