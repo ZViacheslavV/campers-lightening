@@ -7,6 +7,7 @@ import styles from './FormCampervan.module.scss';
 import RedButton from '@/components/ui/RedButton/RedButton';
 import { Toast } from '@/components/ui/Toast/Toast';
 import DateField from './DateField/DateField';
+import clsx from 'clsx';
 
 interface BookRequest {
   name: string;
@@ -21,17 +22,14 @@ const initialValues: BookRequest = { name: '', email: '', date: null as Date | n
 
 const RegistrationFormSchema = Yup.object().shape({
   name: Yup.string()
-    .min(3, 'Name should be at least 3 symbols')
-    .max(24, 'Too long name')
-    .required('Required'),
+    .min(3, 'name should be at least 3 symbols')
+    .max(24, 'too long name')
+    .required('required'),
   email: Yup.string()
-    .max(32, 'Email is too long')
-    .email('Invalid email format')
-    .required('Required'),
-  date: Yup.date().required('Required'),
-  comment: Yup.string()
-    .min(8, 'Comment should be at least 8 symbols')
-    .max(256, 'Comment is too long'),
+    .max(32, 'email is too long')
+    .email('invalid email format')
+    .required('required'),
+  date: Yup.date().required('required'),
 });
 
 //===============================================================
@@ -82,9 +80,7 @@ function FormCampervan() {
               </label>
 
               <Field
-                className={`${styles.field} ${
-                  touched.name && errors.name ? styles.fieldInvalid : ''
-                } ${touched.name && !errors.name ? styles.fieldValid : ''}`}
+                className={styles.field}
                 type="text"
                 name="name"
                 id={`${fieldId}-name`}
@@ -96,11 +92,6 @@ function FormCampervan() {
                 <ErrorMessage name="name">
                   {(msg) => <p className={styles.errorText}>{msg}</p>}
                 </ErrorMessage>
-                {/*       {!(touched.name && errors.name) && (
-                <p className={styles.errorTextHidden} aria-hidden="true">
-                  hidden text;
-                </p>
-              )} */}
               </div>
             </div>
 
@@ -111,9 +102,7 @@ function FormCampervan() {
               </label>
 
               <Field
-                className={`${styles.field} ${
-                  touched.email && errors.email ? styles.fieldInvalid : ''
-                } ${touched.email && !errors.email ? styles.fieldValid : ''}`}
+                className={styles.field}
                 type="email"
                 name="email"
                 id={`${fieldId}-email`}
@@ -126,14 +115,10 @@ function FormCampervan() {
                 <ErrorMessage name="email">
                   {(msg) => <p className={styles.errorText}>{msg}</p>}
                 </ErrorMessage>
-                {/*   {!(touched.email && errors.email) && (
-                <p className={styles.errorTextHidden} aria-hidden="true">
-                  hidden text;
-                </p>
-              )} */}
               </div>
             </div>
 
+            {/* Date */}
             <DateField
               value={values.date}
               onChange={(date) => {
@@ -152,9 +137,7 @@ function FormCampervan() {
 
               <Field
                 as="textarea"
-                className={`${styles.field} ${styles.textArea} ${
-                  touched.comment && errors.comment ? styles.fieldInvalid : ''
-                } ${touched.comment && !errors.comment ? styles.fieldValid : ''}`}
+                className={clsx(styles.field, styles.textArea)}
                 type={'text'}
                 name="comment"
                 id={`${fieldId}-comment`}
@@ -165,11 +148,6 @@ function FormCampervan() {
                 <ErrorMessage name="comment">
                   {(msg) => <p className={styles.errorText}>{msg}</p>}
                 </ErrorMessage>
-                {/* {!(touched.password && errors.password) && (
-                <p className={styles.errorTextHidden} aria-hidden="true">
-                  hidden text;
-                </p>
-              )} */}
               </div>
             </div>
 
