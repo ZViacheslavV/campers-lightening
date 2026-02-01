@@ -119,15 +119,28 @@ function FormCampervan() {
             </div>
 
             {/* Date */}
-            <DateField
-              value={values.date}
-              onChange={(date) => {
-                setFieldValue('date', date);
-                setFieldTouched('date', true, false);
-              }}
-              hasError={!!errors.date}
-              touched={!!touched.date || submitCount > 0}
-            />
+            <div className={styles.fieldGroup}>
+              <label className="visually-hidden" htmlFor={`${fieldId}-date`}>
+                Date
+              </label>
+
+              <DateField
+                value={values.date}
+                onChange={(date) => {
+                  setFieldValue('date', date);
+                  setFieldTouched('date', true, false);
+                }}
+                hasError={!!errors.date}
+                touched={!!touched.date || submitCount > 0}
+                name={'date'}
+              />
+
+              <div className={styles.errors} aria-live="polite">
+                <ErrorMessage name="date">
+                  {(msg) => <p className={styles.errorText}>{msg}</p>}
+                </ErrorMessage>
+              </div>
+            </div>
 
             {/* Comment */}
             <div className={styles.fieldGroup}>

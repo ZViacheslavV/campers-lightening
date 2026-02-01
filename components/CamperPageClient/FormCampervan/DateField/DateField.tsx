@@ -11,11 +11,12 @@ interface DateFieldProps {
   onChange: (date: Date) => void;
   hasError?: boolean;
   touched?: boolean;
+  name: string;
 }
 
 const DATE_FORMAT = 'dd MMMM yyyy';
 
-const DateField = ({ value, onChange, hasError, touched }: DateFieldProps) => {
+const DateField = ({ name, value, onChange, hasError, touched }: DateFieldProps) => {
   const [isCalendarOpen, setCalendarOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
