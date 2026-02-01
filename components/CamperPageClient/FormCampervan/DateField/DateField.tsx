@@ -8,11 +8,13 @@ import styles from './DateField.module.scss';
 interface DateFieldProps {
   value: Date | null;
   onChange: (date: Date) => void;
+  hasError?: boolean;
+  touched?: boolean;
 }
 
 const DATE_FORMAT = 'dd MMMM yyyy';
 
-const DateField = ({ value, onChange }: DateFieldProps) => {
+const DateField = ({ value, onChange, hasError, touched }: DateFieldProps) => {
   const [isCalendarOpen, setCalendarOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -23,8 +25,19 @@ const DateField = ({ value, onChange }: DateFieldProps) => {
       }
     };
 
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setCalendarOpen(false);
+      }
+    };
+
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   const handleSelect = (date?: Date) => {
@@ -33,13 +46,15 @@ const DateField = ({ value, onChange }: DateFieldProps) => {
     setCalendarOpen(false);
   };
 
+  const placeholder = hasError && touched ? 'Select a date between today' : 'Booking date*';
+
   return (
     <div ref={containerRef} className={styles.dateField}>
       <input
         type="text"
         readOnly
         className={styles.input}
-        placeholder="Booking date*"
+        placeholder={placeholder}
         value={value ? format(value, DATE_FORMAT) : ''}
         onClick={() => setCalendarOpen((prev) => !prev)}
       />
@@ -71,6 +86,10 @@ const DateField = ({ value, onChange }: DateFieldProps) => {
               day_today: styles.dayToday,
               day_outside: styles.dayOutside,
               day_disabled: styles.dayDisabled,
+              weeks: styles.weeks,
+              week: styles.week,
+              month_grid: styles.monthGrid,
+              month_caption: styles.monthCaption,
             }}
           />
         </div>

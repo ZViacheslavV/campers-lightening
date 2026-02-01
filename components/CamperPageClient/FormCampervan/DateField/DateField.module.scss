@@ -1,3 +1,6 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
 .dateField {
   position: relative;
   width: 100%;
@@ -12,9 +15,8 @@
   cursor: pointer;
   line-height: 1.2;
 
-  font-weight: 400;
   font-size: 16px;
-  line-height: 150%;
+  line-height: 1.5;
   color: var(--gray);
 
   &:focus {
@@ -34,14 +36,44 @@
   width: 276px;
   padding: 12px;
   background: var(--white);
+
+  border: 1px solid var(--text);
+  border-radius: 12px 12px 0 0;
+  width: 276px;
+  height: 74px;
+  position: relative;
 }
 
 .months {
-  display: flex;
+  /*  display: flex; */
 }
 
 .month {
-  width: 100%;
+  /*   width: 100%;
+
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 120%;
+  text-align: center;
+  color: var(--text); */
+
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--main);
+
+  text-transform: capitalize;
+}
+
+.monthGrid {
+  margin-top: 8px;
+  background: var(--white);
+}
+
+.monthCaption {
 }
 
 .caption {
@@ -52,19 +84,43 @@
 }
 
 .captionLabel {
+  font-family: var(--font-family);
   font-weight: 600;
   font-size: 16px;
+  line-height: 120%;
+  text-align: center;
+  color: var(--main);
+
+  position: absolute;
+  left: 50%;
+  top: 34%;
+  transform: translate(-50%, -50%);
+  /* transform: translateX(59%); */
 }
 
 .nav {
   display: flex;
+  justify-content: space-between;
   gap: 8px;
 }
 
 .navButton {
   background: none;
+
   border: none;
   cursor: pointer;
+}
+
+.weeks {
+  padding: 12px;
+}
+
+.week {
+  /* display: grid; */
+  /*  display: flex; */
+  /* grid-template-columns: repeat(7, 1fr); */
+  gap: 4px;
+  left: 10px;
 }
 
 .table {
@@ -73,15 +129,16 @@
 }
 
 .headRow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
   margin-bottom: 8px;
 }
 
 .headCell {
   font-size: 12px;
   font-weight: 600;
-  color: var(--text);
   text-align: center;
-  padding-bottom: 12px;
+  color: var(--text-secondary);
 }
 
 .row {

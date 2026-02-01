@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import styles from './FormCampervan.module.scss';
 import RedButton from '@/components/ui/RedButton/RedButton';
 import { Toast } from '@/components/ui/Toast/Toast';
-import DateField from '@/components/DateField/DateField';
+import DateField from './DateField/DateField';
 
 interface BookRequest {
   name: string;
@@ -28,7 +28,7 @@ const RegistrationFormSchema = Yup.object().shape({
     .max(32, 'Email is too long')
     .email('Invalid email format')
     .required('Required'),
-  date: Yup.date().required('Required').nullable(),
+  date: Yup.date().required('Required'),
   comment: Yup.string()
     .min(8, 'Comment should be at least 8 symbols')
     .max(256, 'Comment is too long'),
@@ -65,7 +65,15 @@ function FormCampervan() {
         validateOnChange
         validateOnMount
       >
-        {({ errors, touched, isSubmitting, setFieldValue, values }) => (
+        {({
+          errors,
+          touched,
+          isSubmitting,
+          setFieldValue,
+          values,
+          setFieldTouched,
+          submitCount,
+        }) => (
           <Form className={styles.form} noValidate>
             {/* Username */}
             <div className={styles.fieldGroup}>
@@ -128,7 +136,12 @@ function FormCampervan() {
 
             <DateField
               value={values.date}
-              onChange={(date) => setFieldValue('bookingDate', date)}
+              onChange={(date) => {
+                setFieldValue('date', date);
+                setFieldTouched('date', true, false);
+              }}
+              hasError={!!errors.date}
+              touched={!!touched.date || submitCount > 0}
             />
 
             {/* Comment */}
