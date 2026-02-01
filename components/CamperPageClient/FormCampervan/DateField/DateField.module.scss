@@ -46,6 +46,7 @@
   border: 1px solid var(--text);
   border-radius: 12px 12px 0 0;
   width: 276px;
+  margin-left: -1px;
   height: 74px;
   position: relative;
 }
@@ -154,7 +155,7 @@
   border-bottom: 1px solid var(--text);
   border-left: 1px solid var(--text);
   border-right: 1px solid var(--text);
-  width: 277px;
+  width: 276px;
   margin-left: -13px;
   border-radius: 0 0 12px 12px;
 }
