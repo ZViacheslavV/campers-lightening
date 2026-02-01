@@ -6,15 +6,16 @@ import * as Yup from 'yup';
 import styles from './FormCampervan.module.scss';
 import RedButton from '@/components/ui/RedButton/RedButton';
 import { Toast } from '@/components/ui/Toast/Toast';
+import DateField from '@/components/DateField/DateField';
 
 interface BookRequest {
   name: string;
   email: string;
-  date: null;
+  date: Date | null;
   comment: string;
 }
 
-const initialValues: BookRequest = { name: '', email: '', date: null, comment: '' };
+const initialValues: BookRequest = { name: '', email: '', date: null as Date | null, comment: '' };
 
 //===============================================================
 
@@ -64,7 +65,7 @@ function FormCampervan() {
         validateOnChange
         validateOnMount
       >
-        {({ errors, touched, isSubmitting }) => (
+        {({ errors, touched, isSubmitting, setFieldValue, values }) => (
           <Form className={styles.form} noValidate>
             {/* Username */}
             <div className={styles.fieldGroup}>
@@ -124,6 +125,11 @@ function FormCampervan() {
               )} */}
               </div>
             </div>
+
+            <DateField
+              value={values.date}
+              onChange={(date) => setFieldValue('bookingDate', date)}
+            />
 
             {/* Comment */}
             <div className={styles.fieldGroup}>
