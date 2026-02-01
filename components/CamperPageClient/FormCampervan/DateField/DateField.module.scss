@@ -50,20 +50,7 @@
   position: relative;
 }
 
-.months {
-  /*  display: flex; */
-}
-
 .month {
-  /*   width: 100%;
-
-  font-family: var(--font-family);
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 120%;
-  text-align: center;
-  color: var(--text); */
-
   font-family: var(--font-family);
   font-weight: 600;
   font-size: 14px;
@@ -72,21 +59,6 @@
   color: var(--main);
 
   text-transform: capitalize;
-}
-
-.monthGrid {
-  margin-top: 8px;
-  background: var(--white);
-}
-
-.monthCaption {
-}
-
-.caption {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
 }
 
 .captionLabel {
@@ -107,55 +79,6 @@
 .nav {
   display: flex;
   justify-content: space-between;
-  gap: 8px;
-}
-
-.navButton {
-  background: none;
-
-  border: none;
-  cursor: pointer;
-}
-
-.weeks {
-  padding: 12px;
-}
-
-.week {
-  /* display: grid; */
-  /*  display: flex; */
-  /* grid-template-columns: repeat(7, 1fr); */
-  gap: 4px;
-  left: 10px;
-}
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.headRow {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  margin-bottom: 8px;
-}
-
-.headCell {
-  font-size: 12px;
-  font-weight: 600;
-  text-align: center;
-  color: var(--text-secondary);
-}
-
-.row {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
-  margin-bottom: 4px;
-}
-
-.cell {
-  text-align: center;
 }
 
 .day {
@@ -165,40 +88,73 @@
   border: 1px solid transparent;
   cursor: pointer;
   font-size: 14px;
+  height: 22px;
+  width: 6px;
+  padding: 9px;
+
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  text-align: center;
+
+  border-radius: 32px;
+  width: 36px;
+  height: 32px;
+
+  @include transition(all);
 
   &:hover {
-    border-radius: 32px;
-    width: 36px;
-    height: 32px;
     background: var(--text);
-
-    font-family: var(--font-family);
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 120%;
-    text-align: center;
     color: var(--inputs);
   }
 }
 
-.daySelected {
-  background-color: var(--text);
-  color: #fff;
-}
-
-.dayToday {
-  font-weight: 700;
-}
-
-.dayOutside {
-  opacity: 0.4;
-}
-
-.dayDisabled {
+/* .dayDisabled {
   opacity: 0.4;
   cursor: not-allowed;
 
   &:hover {
     border-color: transparent;
   }
+} */
+
+//================================================================
+
+.weekNumber {
+  color: red;
+  background-color: green;
+}
+
+.weekday {
+  /* color: red;
+  background-color: green; */
+  text-transform: uppercase;
+}
+
+.month {
+  /*   color: red;
+  background-color: green; */
+  margin-top: 10px;
+  z-index: -1;
+
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--main);
+
+  border-radius: 12px;
+  /*   width: 276px;
+  height: 274px; */
+
+  background: var(--white);
+
+  border-bottom: 1px solid var(--text);
+  border-left: 1px solid var(--text);
+  border-right: 1px solid var(--text);
+  width: 277px;
+  margin-left: -13px;
+  border-radius: 0 0 12px 12px;
 }

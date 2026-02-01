@@ -72,8 +72,6 @@ const DateField = ({ name, value, onChange, hasError, touched }: DateFieldProps)
             fixedWeeks
             classNames={{
               root: styles.calendarRoot,
-              months: styles.months,
-              month: styles.month,
               caption: styles.caption,
               caption_label: styles.captionLabel,
               nav: styles.nav,
@@ -90,8 +88,14 @@ const DateField = ({ name, value, onChange, hasError, touched }: DateFieldProps)
               day_disabled: styles.dayDisabled,
               weeks: styles.weeks,
               week: styles.week,
+              week_number: styles.weekNumber,
+              week_number_header: styles.weekNumberHeader,
+              weekday: styles.weekday,
+              weekdays: styles.weekdays,
               month_grid: styles.monthGrid,
               month_caption: styles.monthCaption,
+              months: styles.months,
+              month: styles.month,
             }}
           />
         </div>
