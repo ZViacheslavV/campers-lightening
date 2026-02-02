@@ -123,6 +123,7 @@ The project is deployed and available at:
 ## 👤 Author
 
 **Viacheslav Zykov**
+
 Frontend / Fullstack Developer
 
 - GitHub: https://github.com/ZViacheslavV

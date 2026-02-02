@@ -122,6 +122,7 @@ http://localhost:3000
 ## 👤 Автор
 
 **Viacheslav Zykov**
+
 Frontend / Fullstack Developer
 
 - GitHub: https://github.com/ZViacheslavV
