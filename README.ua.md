@@ -126,9 +126,3 @@ Frontend / Fullstack Developer
 
 - GitHub: https://github.com/ZViacheslavV
 - LinkedIn: https://www.linkedin.com/in/viacheslav-zykov/
-
----
-
-## 📌 Примітка
-
-Проєкт виконаний у рамках тестового завдання та повністю відповідає вимогам технічного завдання, включно з критичними критеріями оцінювання.
