@@ -1,71 +1,72 @@
 # 🚐 [TravelTrucks — Campers Lightening](https://campers-lightening.vercel.app/)
 
-## 📖 Опис проєкту
+## 📖 Project Overview
 
-**TravelTrucks(Campers Lightening)** — це фронтенд веб‑додаток для компанії з купівлі або оренди кемперів. Додаток дозволяє користувачам переглядати каталог доступних кемперів, фільтрувати їх за різними параметрами, додавати в обране та переглядати детальну інформацію з відгуками і формою бронювання.
+**TravelTrucks (Campers Lightening)** is a frontend web application for a company that sells and rents campers.
+The app allows users to browse a catalog of available campers, filter them by multiple parameters, add items to favorites, and view detailed camper information including reviews and a booking form.
 
-Проєкт реалізований відповідно до технічного завдання та орієнтований на чисту архітектуру, масштабованість і коректну роботу з бекенд API.
-
----
-
-## ✨ Основні функції
-
-- 🏠 **Головна сторінка** з банером та кнопкою переходу до каталогу
-- 📋 **Каталог кемперів**
-  - фільтрація (локація, тип кузова, трансмісія, обладнання тощо)
-  - фільтрація виконується **на бекенді**
-  - пагінація (Load More) з урахуванням фільтрів
-
-- ❤️ **Обране**
-  - додавання/видалення кемперів до списку обраних
-  - збереження обраних при оновленні сторінки
-
-- 🔍 **Сторінка окремого кемпера**
-  - детальна інформація та характеристики
-  - галерея зображень
-  - вкладки **Features / Reviews** (Features активна за замовчуванням)
-  - відгуки з рейтингом (5‑зіркова шкала)
-
-- 📝 **Форма бронювання**
-  - відправка форми бронювання
-  - нотифікація про успішне бронювання
-
-- ⏳ **Loader** під час асинхронних запитів
+The project is implemented according to the technical requirements and focuses on clean architecture, scalability, and correct integration with a backend API.
 
 ---
 
-## 🛠️ Технології
+## ✨ Key Features
+
+- 🏠 **Home page** with a hero banner and a call-to-action button leading to the catalog
+- 📋 **Campers catalog**
+  - filtering by location, body type, transmission, equipment, etc.
+  - filtering is performed **on the backend**
+  - pagination via **Load More**, respecting active filters
+
+- ❤️ **Favorites**
+  - add / remove campers to favorites
+  - favorites persist after page reload
+
+- 🔍 **Single camper page**
+  - detailed specifications and description
+  - image gallery
+  - **Features / Reviews** tabs (Features tab is active by default)
+  - reviews with a 5-star rating system
+
+- 📝 **Booking form**
+  - booking form submission
+  - success notification after submission
+
+- ⏳ **Loader** for all asynchronous requests
+
+---
+
+## 🛠️ Tech Stack
 
 - **Next.js** (App Router)
 - **TypeScript**
-- **Zustand** — глобальний стан (кемпери, фільтри, обране)
-- **Axios** — робота з API
-- **SCSS / CSS Modules** — стилізація
-- **MockAPI** — бекенд API
+- **Zustand** — global state management (campers, filters, favorites)
+- **Axios** — API communication
+- **SCSS / CSS Modules** — styling
+- **MockAPI** — backend API
 
 ---
 
 ## 🌐 API
 
-Використовується готовий бекенд API:
+The project uses a ready-to-use backend API:
 
-- `GET /campers` — отримання списку кемперів (з фільтрацією та пагінацією)
-- `GET /campers/:id` — деталі конкретного кемпера
+- `GET /campers` — fetch campers list (with filtering and pagination)
+- `GET /campers/:id` — fetch single camper details
 
-Фільтрація та пагінація виконуються **виключно на бекенді**.
+Filtering and pagination are handled **on the backend**.
 
 ---
 
-## 🚀 Запуск проєкту локально
+## 🚀 Running the Project Locally
 
-1. Клонувати репозиторій:
+1. Clone the repository:
 
 ```bash
 git clone https://github.com/ZViacheslavV/campers-lightening
 cd campers-lightening
 ```
 
-2. Встановити залежності:
+2. Install dependencies:
 
 ```bash
 npm install
@@ -73,7 +74,7 @@ npm install
 yarn install
 ```
 
-3. Запустити dev‑сервер:
+3. Start the development server:
 
 ```bash
 npm run dev
@@ -81,7 +82,7 @@ npm run dev
 yarn dev
 ```
 
-4. Відкрити у браузері:
+4. Open in your browser:
 
 ```
 http://localhost:3000
@@ -89,37 +90,37 @@ http://localhost:3000
 
 ---
 
-## 🧭 Структура маршрутів
+## 🧭 Routes Structure
 
-- `/` — головна сторінка
-- `/catalog` — каталог кемперів
-- `/catalog/[id]` — сторінка окремого кемпера
-
----
-
-## ⚙️ Особливості реалізації
-
-- Глобальний стан реалізований через **Zustand**
-- Фільтри зберігаються при навігації між сторінками
-- При зміні фільтрів:
-  - попередні результати очищаються
-  - пагінація скидається
-
-- Обране зберігається між сесіями
-- Відсутні помилки в консолі
-- Код відформатований та структурований відповідно до принципів DRY
+- `/` — Home page
+- `/catalog` — Campers catalog
+- `/catalog/[id]` — Single camper page
 
 ---
 
-## 🌍 Деплой
+## ⚙️ Implementation Details
 
-Проєкт задеплоєний та доступний за посиланням:
+- Global state is managed using **Zustand**
+- Filters persist during navigation between pages
+- When filters change:
+  - previous results are cleared
+  - pagination state is reset
+
+- Favorites persist across sessions
+- No console errors
+- Codebase follows DRY principles, well-structured and formatted
+
+---
+
+## 🌍 Deployment
+
+The project is deployed and available at:
 
 🔗 **Live demo:** https://campers-lightening.vercel.app/
 
 ---
 
-## 👤 Автор
+## 👤 Author
 
 **Viacheslav Zykov**
 Frontend / Fullstack Developer
@@ -129,6 +130,6 @@ Frontend / Fullstack Developer
 
 ---
 
-## 📌 Примітка
+## 📌 Note
 
-Проєкт виконаний у рамках тестового завдання та повністю відповідає вимогам технічного завдання, включно з критичними критеріями оцінювання.
+This project was completed as part of a technical assignment and fully meets all stated requirements, including critical evaluation criteria.
