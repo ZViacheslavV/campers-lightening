@@ -63,7 +63,7 @@ const Filters = () => {
 
   const applySearch = useCallback(() => {
     setFilter({
-      location: draftFilters.location || undefined,
+      location: draftFilters.location?.trim() || undefined,
       form: draftFilters.form,
       equipment: draftFilters.equipment?.length ? draftFilters.equipment : undefined,
       transmission: draftFilters.transmission,

@@ -19,6 +19,7 @@
         width: 100%;
         border-radius: 10px;
         @include transition(scale);
+        object-fit: cover;
         z-index: 1;
 
         &:hover {

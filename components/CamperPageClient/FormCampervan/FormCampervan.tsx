@@ -22,13 +22,16 @@ const initialValues: BookRequest = { name: '', email: '', date: null as Date | n
 
 const RegistrationFormSchema = Yup.object().shape({
   name: Yup.string()
+    .trim()
     .min(3, 'Name should be at least 3 symbols')
     .max(24, 'Too long name')
     .required('Required'),
   email: Yup.string()
+    .trim()
     .max(32, 'Email is too long')
     .email('Invalid email format')
     .required('Required'),
+  comment: Yup.string().trim(),
   date: Yup.date().required('Required'),
 });
 
@@ -38,7 +41,18 @@ function FormCampervan() {
   const fieldId = useId();
 
   const handleSubmit = async (values: BookRequest, actions: FormikHelpers<BookRequest>) => {
+    const normalizeBookingRequest = (values: BookRequest): BookRequest => ({
+      ...values,
+      name: values.name.trim(),
+      email: values.email.trim(),
+      comment: values.comment.trim(),
+    });
+
+    const normalizedRequest = normalizeBookingRequest(values);
+
     try {
+      console.log('Booking request: ', normalizedRequest);
+
       Toast.booking('Congratulations with successful booking!');
       actions.resetForm();
     } catch (err) {
