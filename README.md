@@ -1,13 +1,13 @@
 # 🚐 [TravelTrucks — Campers Lightening](https://campers-lightening.vercel.app/)
 
+![App Preview](public/campers-og.jpg)
+
 ## 📖 Project Overview
 
 **TravelTrucks (Campers Lightening)** is a frontend web application for a company that sells and rents campers.
 The app allows users to browse a catalog of available campers, filter them by multiple parameters, add items to favorites, and view detailed camper information including reviews and a booking form.
 
 The project is implemented according to the technical requirements and focuses on clean architecture, scalability, and correct integration with a backend API.
-
-![App Preview](public/campers-og.jpg)
 
 ---
 
