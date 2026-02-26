@@ -1,6 +1,8 @@
 # 🚐 [TravelTrucks — Campers Lightening](https://campers-lightening.vercel.app/)
 
-![App Preview](public/campers-og.jpg)
+<a href="https://campers-lightening.vercel.app/">
+  <img src="public/campers-og.jpg" width="1100" alt="App Campers"/>
+</a>
 
 ## 📖 Project Overview
 
