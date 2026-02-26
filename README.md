@@ -7,6 +7,8 @@ The app allows users to browse a catalog of available campers, filter them by mu
 
 The project is implemented according to the technical requirements and focuses on clean architecture, scalability, and correct integration with a backend API.
 
+![App Preview](public/campers-og.jpg)
+
 ---
 
 ## ✨ Key Features
