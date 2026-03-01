@@ -1,0 +1,26 @@
+/// Applies CSS transition
+/// @param {string | list} $properties - CSS properties to animate
+/// @param {time} $duration - transition duration
+/// @param {string} $timing - timing function
+@mixin transition($properties, $duration: 0.25s, $timing: cubic-bezier(0.4, 0, 0.2, 1)) {
+  transition: #{$properties} $duration $timing;
+}
+
+/// Flexbox centering helper
+/// @param {row|column} $direction
+/// @param {string} $justify
+/// @param {string} $align
+@mixin flex-center($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+/// Mobile-first min-width media query
+/// @param {length} $bp - breakpoint value (e.g., 768px)
+@mixin media-min($bp) {
+  @media only screen and (min-width: $bp) {
+    @content;
+  }
+}

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import '@/styles/globals.scss';
+import 'modern-normalize/modern-normalize.css';
+import '@/styles/main.scss';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 import Header from '@/components/Header/Header';
 import { SITE_URL } from '@/lib/constants';

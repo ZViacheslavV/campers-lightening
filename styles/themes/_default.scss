@@ -1,0 +1,9 @@
+@use '../utilities/tokens' as *;
+
+:root {
+  @each $name, $value in $colors {
+    --#{$name}: #{$value};
+  }
+
+  --transition-default: #{$transition-default};
+}
