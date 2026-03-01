@@ -1,5 +1,9 @@
 # 🚐 [TravelTrucks — Campers Lightening](https://campers-lightening.vercel.app/)
 
+<a href="https://campers-lightening.vercel.app/">
+  <img src="public/campers-og.jpg" width="1100" alt="App Campers"/>
+</a>
+
 ## 📖 Project Overview
 
 **TravelTrucks (Campers Lightening)** is a frontend web application for a company that sells and rents campers.
