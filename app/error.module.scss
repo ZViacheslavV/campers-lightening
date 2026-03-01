@@ -1,5 +1,7 @@
-@use '@/styles/variables' as *;
-@use '@/styles/mixins' as *;
+@use '@/styles/utilities/variables' as *;
+@use '@/styles/utilities/mixins' as *;
+
+//TODO 1. change to indexes in all this files 2. check --var and sass variables matching
 
 .error {
   min-height: calc(100vh - 72px);
