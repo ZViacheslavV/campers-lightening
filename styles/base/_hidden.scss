@@ -1,15 +1,75 @@
+/* ==========================================================================
+   A11Y HELPERS
+   ========================================================================== */
+
+/**
+ * Visually hides element but keeps it accessible to screen readers.
+ * Use for labels, descriptions, helper text.
+ */
 .visually-hidden {
   position: absolute;
   width: 1px;
   height: 1px;
   margin: -1px;
-  border: 0;
   padding: 0;
+  border: 0;
   white-space: nowrap;
   clip-path: inset(100%);
   overflow: hidden;
 }
 
+/**
+ * Alias widely used in design systems.
+ */
+.sr-only {
+  @extend .visually-hidden;
+}
+
+/**
+ * Shows visually-hidden content when focused.
+ * Critical for skip links and keyboard navigation.
+ */
+.sr-only-focusable {
+  @extend .visually-hidden;
+
+  &:focus,
+  &:focus-visible {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    clip-path: none;
+    overflow: visible;
+    white-space: normal;
+  }
+}
+
+/**
+ * Completely removes element from layout and accessibility tree.
+ * Use carefully.
+ */
 .hidden {
-  display: none;
+  display: none !important;
+}
+
+/**
+ * Makes element visually hidden but keeps layout space.
+ * Useful for skeletons and layout stability.
+ */
+.invisible {
+  visibility: hidden;
+}
+
+/**
+ * Disables pointer interaction without affecting layout.
+ */
+.no-pointer {
+  pointer-events: none;
+}
+
+/**
+ * Enables pointer interaction explicitly.
+ */
+.pointer {
+  pointer-events: auto;
 }

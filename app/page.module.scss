@@ -28,7 +28,7 @@
   font-weight: 600;
   font-size: 32px;
   line-height: 0.67;
-  color: $inputs-color;
+  color: var(--inputs);
   margin-bottom: 16px;
 
   @include media-min($bp-xxl) {
@@ -40,7 +40,7 @@
   font-weight: 600;
   font-size: 24px;
   line-height: 1.33;
-  color: $inputs-color;
+  color: var(--inputs);
   margin-bottom: 40px;
 }
 
@@ -65,7 +65,7 @@
   @include transition(background-color);
 
   &:hover {
-    background-color: $button-hover-color;
+    background-color: var(--button-hover);
   }
 }
 

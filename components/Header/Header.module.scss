@@ -2,8 +2,8 @@
 @use '@/styles/utilities/mixins' as *;
 
 .header {
-  border-bottom: 1px solid $badges-color;
-  background-color: $inputs-color;
+  border-bottom: 1px solid var(--badges);
+  background-color: var(--inputs);
 }
 
 .inner {
@@ -38,16 +38,16 @@
 .link {
   font-size: 16px;
   font-weight: 500;
-  color: $main-color;
+  color: var(--main);
   padding: 24px 0;
   text-decoration: none;
   @include transition(color);
 
   &:hover {
-    color: $button-hover-color;
+    color: var(--main);
   }
 
   &.active {
-    color: $button-hover-color;
+    color: var(--main);
   }
 }

@@ -1,17 +1,8 @@
-// Colors
-$main-color: var(--main);
-$inputs-color: var(--inputs);
-$badges-color: var(--badges);
-$button-hover-color: var(--button-hover);
-$button-color: var(--button);
-$white-color: var(--white);
-$transition-color: var(--transition-default);
-
 // Transitions
-$transition-color: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-color: color 0.3s cubic-bezier(0.4, 0, 0.2, 1) !default;
 
 // Sizes
-$header-height: 72px;
+$header-height: 72px !default;
 
 // Breakpoints
 $bp-sm: 640px;
