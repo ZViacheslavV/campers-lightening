@@ -24,3 +24,12 @@
     @content;
   }
 }
+
+/// Sets width and height simultaneously.
+/// If $height is not provided, creates a square (height = width).
+/// @param {length} $width - element width
+/// @param {length} $height - element height (defaults to $width)
+@mixin frame-size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
