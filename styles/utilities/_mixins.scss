@@ -33,3 +33,24 @@
   width: $width;
   height: $height;
 }
+
+/// Positions element with optional centering via translate.
+/// Defaults to absolute centering (50% / 50% + -50% / -50%).
+/// Useful for modals, loaders, badges, overlays.
+/// @param {position} $position-type - CSS position value (absolute, fixed, relative, etc.)
+/// @param {length | percentage} $position-x - left coordinate
+/// @param {length | percentage} $position-y - top coordinate
+/// @param {length | percentage} $offset-x - translate X offset
+/// @param {length | percentage} $offset-y - translate Y offset
+@mixin position(
+  $position-type: absolute,
+  $position-x: 50%,
+  $position-y: 50%,
+  $offset-x: -50%,
+  $offset-y: -50%
+) {
+  position: $position-type;
+  top: $position-y;
+  left: $position-x;
+  transform: translate($offset-x, $offset-y);
+}
