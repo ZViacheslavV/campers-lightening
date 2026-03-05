@@ -59,3 +59,72 @@
   transform: translate($offset-x, $offset-y);
   z-index: $layer-index;
 }
+//Example named arguments:
+// .decoration {
+// @include position($offset-y: -70%, $layer-index: 100)}
+
+/// Generates button size variants based on a list of selectors.
+/// Each selector receives progressively larger padding and border-radius.
+/// The size is calculated using a simple linear scaling factor.
+///
+/// Example:
+/// @include btn-size('.btn-sm', '.btn-md', '.btn-lg');
+///
+/// Output:
+/// .btn-sm { ... }
+/// .btn-md { ... }
+/// .btn-lg { ... }
+///
+/// Scaling logic:
+/// factor = (index * 4 - 4)
+/// padding = (4px + factor) (8px + factor)
+/// border-radius = (8px + factor)
+///
+/// @param {list} $args - List of selectors for size variants
+/// @example scss
+/// @include btn-size('.btn-sm', '.btn-md', '.btn-lg');
+@mixin btn-size($args...) {
+  @for $i from 1 through length($args) {
+    #{nth($args, $i)} {
+      $factor: ($i * 4 - 4);
+      padding: (4px + $factor) (8px + $factor);
+      border-radius: (8px + $factor);
+    }
+  }
+}
+//Example btn-size (generating 3 new css classes):
+// @include btn-size(".btn-sm",".btn-md",".btn-lg");
+
+/// Applies styles on hover only if the element does NOT have a specific attribute.
+/// Useful for preventing hover styles when element is disabled,
+/// loading, or in another restricted state.
+///
+/// Example:
+/// @include hover('disabled') {
+///   background: red;
+/// }
+///
+/// Output:
+/// &:not([disabled]):hover { ... }
+///
+/// @param {string} $state - Attribute that disables hover behavior
+/// @content CSS rules applied during hover state
+/// @example scss
+/// @include hover('aria-disabled') {
+///   opacity: 0.6;
+/// }
+@mixin hover($state) {
+  &:not([#{$state}]):hover {
+    @content;
+  }
+}
+//Example @content, hover:
+// .button {
+//   background-color: white;
+//   border: 1px solid darkblue;
+
+//   @include hover($state: disabled) {
+//     color: white;
+//     background-color: darkblue;
+//   }
+// }
