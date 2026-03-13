@@ -1,0 +1,30 @@
+@use 'sass:math';
+
+/// A function to remove units of measurement from an expression
+/// @param  {String} $value Values with units of measurement in "px
+/// @return {Number} A number without units of measurement
+/// @example
+///     strip-unit(12px) => 12
+
+@function strip-unit($value) {
+  @if type-of($value) != 'number' {
+    @error "#{$value} is not a number.";
+  }
+
+  @if type-of($value) == 'number' and not unitless($value) {
+    @return math.div($value, ($value * 0 + 1));
+  }
+
+  @return $value;
+}
+
+/// Function for converting "px" to "rem"
+/// @param  {String} $px-value The value to be converted to "px
+/// @param  {String} [$base-font-size: 16px] The base value relative to which the calculation will take place
+/// @return {String} Convertible value in "rem
+/// @example
+///     rem(1000px) => 62.5rem
+
+@function rem($px-value, $base-font-size: 16px) {
+  @return #{math.div(strip-unit($px-value), strip-unit($base-font-size))}rem;
+}
